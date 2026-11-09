@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>个人活动数字孪生 · 教学原型</title>
+<style>
+:root{color-scheme:light;--ink:#142b35;--muted:#4f646a;--paper:#f3f6f3;--white:#fff;--line:#d6e0dc;--teal:#126d62;--orange:#a24824;--blue:#245ea4}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 "Microsoft YaHei","PingFang SC",sans-serif}
+header{background:#183b39;color:#fff;padding:24px max(20px,calc((100vw - 1120px)/2)) 21px;border-bottom:4px solid #6ebaa5}
+header p{color:#d6ebe3;margin:.25em 0}h1{font-size:clamp(23px,4vw,34px);margin:0}h2{font-size:22px;margin:0 0 8px}h3{font-size:17px;margin:18px 0 6px}p{margin:8px 0}
+main{max-width:1160px;margin:auto;padding:18px 20px 32px}nav,.controls,.legend{display:flex;gap:10px;align-items:center;flex-wrap:wrap}nav{margin-bottom:14px}
+button,select,input{font:inherit}button,select{background:var(--white);border:1px solid #a6bcb4;border-radius:5px;color:var(--ink);padding:7px 11px}button{cursor:pointer}button[aria-pressed=true],button.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}label{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}input[type=range]{accent-color:var(--teal);width:min(62vw,370px)}
+.panel{background:var(--white);border:1px solid var(--line);padding:clamp(12px,3vw,24px);border-radius:7px}.meta{color:var(--muted);font-size:13px}.number{font-variant-numeric:tabular-nums}.status{background:#eaf4ef;border-left:4px solid var(--teal);padding:8px 12px;margin:14px 0}.status.warn{background:#fbf0e9;border-left-color:var(--orange)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:12px 0}.card{background:#f5f8f5;border:1px solid var(--line);padding:11px 13px;min-width:0}.card strong{display:block;font-size:22px}.scroll{overflow:auto;max-height:310px;border:1px solid var(--line)}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;text-align:left}th,td{padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}th{position:sticky;top:0;background:#eef4ef}td:last-child{border-right:none}
+svg.chart{width:100%;height:auto;display:block;margin:10px 0 2px;background:#fcfdfc;border:1px solid var(--line)}svg text{font:14px "Microsoft YaHei",sans-serif;fill:var(--muted)}.legend span{font-size:13px;display:inline-flex;align-items:center;gap:5px}.legend i{display:inline-block;width:16px;border-top:3px solid var(--color)}footer{color:var(--muted);font-size:13px;margin:14px 0;overflow-wrap:anywhere}
+@media(max-width:580px){main{padding:12px}header{padding:18px 12px}button,select{max-width:100%}.chart text{font-size:19px}}
+</style>
+</head>
+<body>
+<header><h1>个人活动数字孪生</h1><p>本地教学原型 · 单人可穿戴记录 · 2026 年 9 月 29 日至 10 月 29 日</p></header>
+<main>
+<nav aria-label="模块">
+ <button data-panel="history" aria-pressed="true">个人状态</button>
+ <button data-panel="replay" aria-pressed="false">游泳心率回放</button>
+ <button data-panel="energy" aria-pressed="false">游泳计划热量</button>
+ <button data-panel="rest" aria-pressed="false">静息心率验证</button>
+</nav>
+<section class="panel" id="history">
+ <h2>个人状态</h2><p class="meta">时间轴按日显示中位数，悬停可查看当日原记录数。分期按设备事件显示。</p>
+ <div class="grid" id="overview"></div>
+ <label>记录指标 <select id="metric"></select></label>
+ <div id="historyPlot"></div>
+ <div class="controls"><label>事件记录 <select id="eventType"><option value="workouts">单次运动</option><option value="sleep">睡眠</option><option value="warnings">平台预警</option><option value="sheets">工作表覆盖</option></select></label></div>
+ <div id="events"></div><div id="sleepDetail"></div>
+</section>
+<section class="panel" id="replay" hidden>
+ <h2>游泳心率回放</h2><p class="meta">预测在输入窗口结束时发出，实测在目标窗口结束时揭示。黑色为已显示的观测，蓝色为已发出的预测。</p>
+ <div class="controls"><label>场次 <select id="session"></select></label><label>提前 <select id="horizon"><option value="30">30 秒</option><option value="120" selected>2 分钟</option></select></label><button id="play" class="primary">播放</button><button id="advance">前进 30 秒</button></div>
+ <div class="controls"><label>回放进度 <input id="clock" type="range" min="0" step="30" value="0"></label><output id="clockLabel"></output></div>
+ <p id="replayStatus" class="status" aria-live="polite"></p><p id="replayScore" class="meta" aria-live="polite"></p><div id="replayPlot"></div><div id="heartTable"></div>
+</section>
+<section class="panel" id="energy" hidden>
+ <h2>计划游泳时长与设备热量</h2><p class="meta">场次热量来自单次运动表。时长以计划的整场分钟计。情景曲线按同类历史记录校准。</p>
+ <p id="energyStatus" class="status"></p><div id="energyInput"></div><div id="energyPlot"></div>
+ <h3>按日期滚动验证</h3><div id="energyTable"></div><p id="energyScope" class="meta"></p>
+</section>
+<section class="panel" id="rest" hidden>
+ <h2>前日活动与次日设备静息心率</h2><p class="meta">日期标签按日末可用处理。目标日零点发出预测，下一日零点显示实测。候选和基线在同一批日期比较。</p>
+ <p id="restStatus" class="status"></p><div id="restPlot"></div><div id="restTable"></div>
+ <h3>睡眠配对探索</h3><p class="meta">每个点对应一晚主睡眠。下午压力取 13:00 至 18:00 各有效小时中位数的平均，每小时至少两条记录，至少覆盖三个小时。</p>
+ <label>观察终点 <select id="sleepOutcome"><option value="next_rest">次日静息心率</option><option value="afternoon_pressure">同日午后压力</option></select></label>
+ <div id="sleepExplore"></div>
+</section>
+<footer id="footer"></footer>
+</main>
+<script>
+"use strict";
+const data = /*__DT_DATA__*/null;
+const el = id => document.getElementById(id);
+const esc = value => String(value ?? "—").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = (v, digits=1) => v == null ? "—" : Number(v).toFixed(digits);
+const dateX = value => Date.parse(value.slice(0,10) + "T00:00:00Z") / 86400000;
+const dateLabel = value => new Date(value * 86400000).toISOString().slice(5,10);
+const colors = { observed:"#162e38", forecast:"#245ea4", baseline:"#126d62", candidate:"#a24824" };
+const names = {persistence:"最近心率",ridge:"个人岭回归",historical:"历史中位数",last:"最近静息心率",minutes:"前日运动分钟",steps:"前日步数",rate:"每分钟热量",line:"约束线性回归",selected:"按历史表现选用"};
+
+function table(headers, rows) {
+  return `<div class="scroll"><table><thead><tr>${headers.map(v=>`<th scope="col">${esc(v)}</th>`).join("")}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(v=>`<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+function metricsTable(metrics, unit) {
+  return table(["模型","可评分数","日期数",`逐点 MAE（${unit}）`,`日期等权 MAE（${unit}）`], Object.entries(metrics).map(([key,m])=>[names[key] || key,m.n,m.days,num(m.mae,2),num(m.date_mae,2)]));
+}
+function chart(id, title, series, domain, labelX, unit) {
+  const points = series.flatMap(s=>s.points.filter(p=>p[1]!=null));
+  if (!points.length) { el(id).innerHTML = `<p class="meta">${esc(title)}暂未显示数据。</p>`; return; }
+  const [xMin,xMax] = domain;
+  const yRaw = points.map(p=>p[1]);
+  const span = Math.max(...yRaw)-Math.min(...yRaw);
+  const pad = Math.max(span*.12, .7);
+  const yMin = Math.max(0,Math.min(...yRaw)-pad), yMax = Math.max(...yRaw)+pad;
+  const x = value => 69+(value-xMin)/Math.max(xMax-xMin,1)*710;
+  const y = value => 235-(value-yMin)/(yMax-yMin)*197;
+  let svg = `<svg class="chart" viewBox="0 0 810 276" role="img" aria-label="${esc(title)}"><title>${esc(title)}</title>`;
+  svg += `<text x="16" y="22">${esc(unit)}</text>`;
+  for (let i=0;i<=4;i++) {
+    const yy = yMin+(yMax-yMin)*i/4;
+    const xx = xMin+(xMax-xMin)*i/4;
+    svg += `<path d="M69 ${y(yy)}H779" stroke="#dde7e2"/><text x="60" y="${y(yy)+5}" text-anchor="end">${num(yy,span>=20?0:1)}</text><text x="${x(xx)}" y="259" text-anchor="middle">${esc(labelX(xx))}</text>`;
+  }
+  for (const s of series) {
+    let path="", previous=null;
+    for (const p of s.points) {
+      if (p[1]==null) { previous=null; continue; }
+      const join = s.connect && previous!=null && p[0]-previous <= (s.maxGap ?? Infinity);
+      path += `${join?"L":"M"}${x(p[0]).toFixed(2)} ${y(p[1]).toFixed(2)} `;
+      previous=p[0];
+    }
+    svg += `<path d="${path}" stroke="${s.color}" stroke-width="2.2" ${s.dash?'stroke-dasharray="6 4"':""} fill="none"/>`;
+    for (const [px,py,detail] of s.points.filter(p=>p[1]!=null)) {
+      svg += `<circle cx="${x(px)}" cy="${y(py)}" r="${s.connect?2.4:4.2}" fill="${s.color}"><title>${esc(detail ?? `${s.name} · ${labelX(px)} · ${num(py)} ${unit}`)}</title></circle>`;
+    }
+  }
+  const legend=series.map(s=>`<span><i style="--color:${s.color}"></i>${esc(s.name)}</span>`).join("");
+  el(id).innerHTML=`${svg}</svg><div class="legend">${legend}</div>`;
+}
+function options(target, values) {
+  el(target).innerHTML=values.map(([value,label])=>`<option value="${esc(value)}">${esc(label)}</option>`).join("");
+}
+function history() {
+  const item=data.history.series[el("metric").value];
+  const points=item.points.map(([d,v,n])=>[dateX(d),v,`${d} · ${num(v)} ${item.unit} · ${n} 条`]);
+  chart("historyPlot",el("metric").value,[{name:"日中位数",color:colors.observed,points,connect:true,maxGap:1}],historyDomain,dateLabel,item.unit);
+}
+function eventHistory() {
+  const type=el("eventType").value;
+  el("sleepDetail").innerHTML="";
+  if(type==="sleep") {
+    el("events").innerHTML=table(["入睡","醒来","记录类型","时长（分）"],data.history.sleep.map(r=>[r.start,r.end,r.type,r.minutes]));
+    el("sleepDetail").innerHTML='<h3>睡眠阶段</h3><label>选择睡眠事件 <select id="sleepChoice"></select></label><div id="sleepPlot"></div>';
+    options("sleepChoice",data.history.sleep.map((r,i)=>[i,`${r.end} · ${r.type}`]));
+    el("sleepChoice").addEventListener("change",sleepStages);
+    sleepStages();
+  } else if(type==="workouts") {
+    el("events").innerHTML=table(["开始","结束","总时长（分）","设备热量（千卡）"],data.history.workouts.map(r=>[r.start,r.end,r.minutes,r.kcal]));
+  } else {
+    el("events").innerHTML=table([type==="sheets"?"工作表":"预警类别","行数"],Object.entries(data.history[type]));
+  }
+}
+function sleepStages() {
+  const r=data.history.sleep[Number(el("sleepChoice").value)];
+  const stageColors={"深睡":"#21494b","浅睡":"#68a08f","快速眼动":"#245ea4","清醒":"#a24824","零星小睡":"#697c76"};
+  const minutes=value=>(Date.parse(value.replace(" ","T")+"+08:00")-Date.parse(r.start.replace(" ","T")+"+08:00"))/60000;
+  const span=Math.max(1,minutes(r.end));
+  const blocks=r.stages.map(([when,stage])=>`<rect x="${20+760*minutes(when)/span}" y="17" width="${760/span+.15}" height="25" fill="${stageColors[stage]}"><title>${esc(when)} · ${esc(stage)}</title></rect>`);
+  el("sleepPlot").innerHTML=`<svg class="chart" viewBox="0 0 800 74" role="img" aria-label="睡眠阶段"><rect x="20" y="17" width="760" height="25" fill="#edf2ee"/>${blocks.join("")}<text x="20" y="63">${esc(r.start.slice(11,16))}</text><text x="780" y="63" text-anchor="end">${esc(r.end.slice(11,16))}</text></svg><div class="legend">${Object.entries(stageColors).map(([k,v])=>`<span><i style="--color:${v}"></i>${k}</span>`).join("")}</div>`;
+}
+let timer=null;
+function stop() { clearInterval(timer); timer=null; el("play").textContent="播放"; }
+function step() {
+  const clock=el("clock");
+  clock.value=Math.min(Number(clock.max),Number(clock.value)+30);
+  replay();
+  if(clock.value===clock.max) stop();
+}
+function resetReplay() {
+  stop();
+  const session=data.heart.sessions.find(s=>s.id===el("session").value);
+  el("clock").max=session.windows.at(-1)[0];
+  el("clock").value=0;
+  replay();
+}
+function replay() {
+  const session=data.heart.sessions.find(s=>s.id===el("session").value);
+  const t=Number(el("clock").value), horizon=Number(el("horizon").value);
+  const issued=data.heart.rows.filter(r=>r.session===session.id && r.horizon===horizon && r.origin_s<=t);
+  const last=issued.at(-1);
+  const scored=issued.filter(r=>r.target_s<=t && r.observed!=null);
+  const latestScore=scored.at(-1);
+  el("clockLabel").textContent=`${num(t/60)} / ${num(Number(el("clock").max)/60)} 分钟`;
+  el("replayStatus").textContent=last ? `${names[last.model]} · 在 ${num(last.origin_s/60)} 分钟发出 · 目标 ${num(last.target_s/60)} 分钟 · 预测 ${num(last.selected)} 次/分 · ${last.target_s>t?"等待实测":last.observed==null?"目标窗缺测":`实测 ${num(last.observed)} · 绝对误差 ${num(Math.abs(last.selected-last.observed))}`}` : session.held_out?"等待连续三个有观测的输入窗口。":"开发期场次，显示历史观测。";
+  el("replayScore").textContent=latestScore?`最近完成评分 · ${num(latestScore.target_s/60)} 分钟 · 预测 ${num(latestScore.selected)} · 实测 ${num(latestScore.observed)} · 绝对误差 ${num(Math.abs(latestScore.selected-latestScore.observed))} 次/分。`:"当前进度尚无可评分的预测。";
+  const points=session.windows.filter(([when])=>when<=t);
+  chart("replayPlot","游泳回放",[{name:"已揭示实测",points,connect:true,maxGap:30,color:colors.observed},{name:"已发出预测",points:issued.map(r=>[r.target_s,r.selected]),connect:true,maxGap:30,color:colors.forecast,dash:true}], [0,Number(el("clock").max)],v=>`${num(v/60,1)} 分`,"次/分");
+  const report=data.heart.metrics[horizon];
+  el("heartTable").innerHTML=`<p class="meta">本场已发出 ${issued.length} 条，已评分 ${scored.length} 条。全部留出场次发出 ${report.issued}/${report.eligible} 条。</p>${metricsTable(report.metrics,"次/分")}`;
+}
+function energy() {
+  const h=data.heat;
+  const passed=h.decision.passed;
+  el("energyStatus").classList.toggle("warn",!passed);
+  el("energyStatus").textContent=passed?`范围内回顾验证通过展示门槛。当前曲线采用 ${names[h.model]}，训练时长 ${h.support.join("–")} 分钟。`:"范围内回顾验证未达到启用门槛。展示历史同类场次及回测误差。";
+  if(passed) {
+    el("energyInput").innerHTML='<div class="controls"><label>计划总时长 <input id="duration" type="range" step="1"></label><output id="estimate"></output></div><div id="plans" class="grid"></div>';
+    el("duration").min=h.support[0]; el("duration").max=h.support[1]; el("duration").value=40;
+    el("duration").addEventListener("input",energyPlot);
+  }
+  energyPlot();
+  el("energyTable").innerHTML=metricsTable(h.metrics,"千卡");
+  el("energyScope").textContent=`入门槛比较仅使用当折训练范围内的样本。范围内 ${h.subgroups.in.selected?.n??0} 场，日期等权 MAE ${num(h.subgroups.in.selected?.date_mae,2)} 千卡。范围外 ${h.subgroups.out.selected?.n??0} 场，日期等权 MAE ${num(h.subgroups.out.selected?.date_mae,2)} 千卡。`;
+}
+function energyPlot() {
+  const h=data.heat;
+  const series=[{name:"历史运动",points:h.samples.map(r=>[r.minutes,r.observed,`${r.date} · ${r.minutes} 分钟 · ${r.observed} 千卡`]),color:colors.observed}];
+  if(h.decision.passed) {
+    const estimate=t=>Math.max(0,h.coefficients[0]+h.coefficients[1]*t);
+    const selected=Number(el("duration").value);
+    el("estimate").textContent=`${selected} 分钟 · ${num(estimate(selected),0)} 千卡`;
+    el("plans").innerHTML=[25,40,55].filter(t=>t>=h.support[0] && t<=h.support[1]).map(t=>`<div class="card">计划 ${t} 分钟<strong>${num(estimate(t),0)} 千卡</strong></div>`).join("");
+    series.push({name:"条件估算",points:h.support.map(t=>[t,estimate(t)]),color:colors.forecast,connect:true},{name:"当前设置",points:[[selected,estimate(selected)]],color:colors.candidate});
+  }
+  chart("energyPlot","游泳时长与设备运动热量",series,h.support,v=>`${num(v,0)} 分`,"千卡");
+}
+function rest() {
+  const r=data.rest;
+  el("restStatus").classList.toggle("warn",!r.decision.passed);
+  el("restStatus").textContent=`${r.pairs} 个前日活动配对 · ${r.rows.length} 天滚动评分 · ${r.decision.passed?"运动分钟达到回顾展示门槛":"运动分钟未稳定优于历史基线，保留研究对照"}。`;
+  const series=[["observed","设备实测",colors.observed],["historical","历史中位数",colors.baseline],["minutes","运动分钟候选",colors.candidate]].map(([key,name,color])=>({name,color,points:r.rows.map(row=>[dateX(row.date),row[key]]),connect:true,maxGap:1}));
+  chart("restPlot","静息心率逐日留出对照",series,[dateX(r.rows[0].date),dateX(r.rows.at(-1).date)],dateLabel,"次/分");
+  el("restTable").innerHTML=metricsTable(r.metrics,"次/分");
+}
+function sleepExplore() {
+  const key=el("sleepOutcome").value;
+  const unit=key==="next_rest"?"次/分":"分";
+  const points=data.sleep_exploration.filter(r=>r[key]!=null).map(r=>[r.minutes,r[key],`${r.date} · 主睡眠 ${r.minutes} 分钟 · ${num(r[key])} ${unit}`]);
+  const durations=data.sleep_exploration.map(r=>r.minutes);
+  chart("sleepExplore","主睡眠时长与观察终点",[{name:`可配对 ${points.length} 晚`,color:colors.observed,points}], [Math.min(...durations),Math.max(...durations)],v=>`${num(v,0)} 分钟`,unit);
+}
+const historyDomain=[dateX("2026-09-29"),dateX("2026-10-29")];
+if(data) {
+  document.querySelectorAll("nav button").forEach(button=>button.addEventListener("click",()=>{
+    stop();
+    document.querySelectorAll("nav button").forEach(tab=>{tab.setAttribute("aria-pressed",String(tab===button));el(tab.dataset.panel).hidden=tab!==button;});
+  }));
+  const total=Object.values(data.history.sheets).reduce((a,b)=>a+b,0);
+  el("overview").innerHTML=[["数据行",total.toLocaleString("zh-CN")],["覆盖日",31],["游泳场次",data.heart.sessions.length],["回放台账已评分",data.info.ledger.scored]].map(([label,value])=>`<div class="card">${label}<strong>${value}</strong></div>`).join("");
+  options("metric",Object.keys(data.history.series).map(k=>[k,k]));
+  options("session",data.heart.sessions.map(s=>[s.id,`${s.id} · ${s.date} · ${s.held_out?"留出":"开发"}`]));
+  el("session").value=data.heart.sessions.find(s=>s.held_out).id;
+  el("metric").addEventListener("change",history);
+  el("eventType").addEventListener("change",eventHistory);
+  el("sleepOutcome").addEventListener("change",sleepExplore);
+  el("session").addEventListener("change",resetReplay);
+  el("horizon").addEventListener("change",replay);
+  el("clock").addEventListener("input",replay);
+  el("advance").addEventListener("click",step);
+  el("play").addEventListener("click",()=>{
+    if(timer){stop();return;}
+    if(el("clock").value===el("clock").max)el("clock").value=0;
+    el("play").textContent="暂停";timer=setInterval(step,480);
+  });
+  history();eventHistory();resetReplay();energy();rest();sleepExplore();
+  el("footer").textContent=`历史回顾评估 · 运行 ${data.info.run_id} · 工作簿 SHA-256 ${data.info.source_sha256}`;
+} else { el("footer").textContent="模板文件。请运行 build.py 后打开 index.html。"; }
+</script>
+</body>
+</html>

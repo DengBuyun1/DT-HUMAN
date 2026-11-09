@@ -1,0 +1,221 @@
+{
+  "heart": {
+    "30": {
+      "model": "persistence",
+      "metrics": {
+        "ridge": {
+          "n": 201,
+          "days": 3,
+          "mae": 7.133708336103387,
+          "date_mae": 6.648489325539548,
+          "bias": 0.054730823430063254
+        },
+        "persistence": {
+          "n": 201,
+          "days": 3,
+          "mae": 6.848258706467662,
+          "date_mae": 6.535270774976658,
+          "bias": -0.6940298507462687
+        }
+      },
+      "issued": 210,
+      "eligible": 255
+    },
+    "120": {
+      "model": "ridge",
+      "metrics": {
+        "ridge": {
+          "n": 176,
+          "days": 3,
+          "mae": 9.687613303526426,
+          "date_mae": 8.584753796330059,
+          "bias": -0.1289503487435462
+        },
+        "persistence": {
+          "n": 176,
+          "days": 3,
+          "mae": 10.678977272727273,
+          "date_mae": 11.618119433693204,
+          "bias": -2.372159090909091
+        }
+      },
+      "issued": 196,
+      "eligible": 237
+    }
+  },
+  "heat": {
+    "metrics": {
+      "historical": {
+        "n": 10,
+        "days": 7,
+        "mae": 120.6,
+        "date_mae": 90.11904761904762,
+        "bias": 96.4
+      },
+      "rate": {
+        "n": 10,
+        "days": 7,
+        "mae": 18.26040391676866,
+        "date_mae": 18.62172874045578,
+        "bias": 1.1163402692778361
+      },
+      "line": {
+        "n": 10,
+        "days": 7,
+        "mae": 21.789681033341395,
+        "date_mae": 16.776995869154447,
+        "bias": 14.93271567510284
+      },
+      "selected": {
+        "n": 10,
+        "days": 7,
+        "mae": 18.87886728782286,
+        "date_mae": 19.505247841961783,
+        "bias": 0.4978768982236346
+      }
+    },
+    "subgroups": {
+      "in": {
+        "historical": {
+          "n": 6,
+          "days": 5,
+          "mae": 48.666666666666664,
+          "date_mae": 47.9,
+          "bias": 8.333333333333334
+        },
+        "rate": {
+          "n": 6,
+          "days": 5,
+          "mae": 17.972664218686237,
+          "date_mae": 17.132313341493255,
+          "bias": 8.980824153406758
+        },
+        "line": {
+          "n": 6,
+          "days": 5,
+          "mae": 13.9181267821341,
+          "date_mae": 13.425291703801767,
+          "bias": 5.248099194171094
+        },
+        "selected": {
+          "n": 6,
+          "days": 5,
+          "mae": 19.003436503776573,
+          "date_mae": 18.36924008360166,
+          "bias": 7.950051868316422
+        }
+      },
+      "out": {
+        "historical": {
+          "n": 4,
+          "days": 2,
+          "mae": 228.5,
+          "date_mae": 195.66666666666666,
+          "bias": 228.5
+        },
+        "rate": {
+          "n": 4,
+          "days": 2,
+          "mae": 18.692013463892287,
+          "date_mae": 22.345267237862092,
+          "bias": -10.680385556915546
+        },
+        "line": {
+          "n": 4,
+          "days": 2,
+          "mae": 33.597012410152345,
+          "date_mae": 25.15625628253615,
+          "bias": 29.459640396500458
+        },
+        "selected": {
+          "n": 4,
+          "days": 2,
+          "mae": 18.692013463892287,
+          "date_mae": 22.345267237862092,
+          "bias": -10.680385556915546
+        }
+      }
+    },
+    "decision": {
+      "passed": true,
+      "comparisons": {
+        "historical": {
+          "gain": 0.6165085577536188,
+          "wins": 5,
+          "days": 5,
+          "passed": true
+        }
+      }
+    },
+    "model": "line",
+    "support": [
+      6.0,
+      60.0
+    ]
+  },
+  "rest": {
+    "pairs": 29,
+    "metrics": {
+      "historical": {
+        "n": 15,
+        "days": 15,
+        "mae": 6.533333333333333,
+        "date_mae": 6.533333333333333,
+        "bias": 2.6666666666666665
+      },
+      "last": {
+        "n": 15,
+        "days": 15,
+        "mae": 7.933333333333334,
+        "date_mae": 7.933333333333334,
+        "bias": 1.0
+      },
+      "minutes": {
+        "n": 15,
+        "days": 15,
+        "mae": 6.732423283445526,
+        "date_mae": 6.732423283445526,
+        "bias": 2.742229806336956
+      },
+      "steps": {
+        "n": 15,
+        "days": 15,
+        "mae": 6.73096842291829,
+        "date_mae": 6.73096842291829,
+        "bias": 2.8442987503015797
+      }
+    },
+    "decision": {
+      "passed": false,
+      "comparisons": {
+        "historical": {
+          "gain": -0.030472951547784677,
+          "wins": 6,
+          "days": 15,
+          "passed": false
+        },
+        "last": {
+          "gain": 0.15137521637241266,
+          "wins": 9,
+          "days": 15,
+          "passed": true
+        }
+      }
+    }
+  },
+  "environment": {
+    "python": "3.10.4",
+    "numpy": "1.26.4",
+    "scikit_learn": "1.6.0",
+    "code_sha256": {
+      "build.py": "6fadd3c208638c8b28ba931a694efd10a82e9e81c2ac5a47fa80cc770eba61fc",
+      "swim.py": "0dde69760f044a72098857aaa63a02710195bcee23c9d5090c7eb5be84da8206",
+      "demo.html": "94390502f19d98aaab9752a7e3b7506ca9c5ccc9f7cd90100acb7ff1f4674555",
+      "vendor\\garmin_lab\\registry\\store.py": "0a5024b59ed577284c53bfafb2c2f1b5c609f1c402c64f7b5a61d4db75430acf"
+    }
+  },
+  "ledger": {
+    "issued": 431,
+    "scored": 402
+  }
+}

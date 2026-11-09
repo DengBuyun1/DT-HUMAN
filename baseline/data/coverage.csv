@@ -1,0 +1,7 @@
+task,source_units,source_unit_type,evaluated_units,evaluated_unit_type,scored_records
+all,31,days,,,
+swim_hr_30s,14,swims,6,swims,201
+swim_hr_120s,14,swims,6,swims,176
+swim_energy,14,swims,10,swims,10
+resting_hr,29,day_pairs,15,days,15
+main_sleep,10,nights,,,
