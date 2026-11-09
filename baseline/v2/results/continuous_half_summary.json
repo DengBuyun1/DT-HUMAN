@@ -1,0 +1,1206 @@
+{
+  "source_sha256": "f02fe6752388aca08a56eb6c27c3540b8f42188f588494b4175fc94038109c8b",
+  "source_rows": 30940,
+  "calendar_days": 31,
+  "hourly_at_least_one": {
+    "实时心率": {
+      "hours": 524,
+      "longest": 50
+    },
+    "血氧": {
+      "hours": 360,
+      "longest": 13
+    },
+    "压力": {
+      "hours": 477,
+      "longest": 45
+    }
+  },
+  "joint_hourly": {
+    "observed_hours": 139,
+    "longest_slots": 11
+  },
+  "daily_hourly": [
+    {
+      "metric": "实时心率",
+      "unit": "次/分",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 19424,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 27.84375,
+            "bias": -20.40625,
+            "p90_abs": 49.5,
+            "days": 16,
+            "date_mae": 27.84375
+          },
+          "last": {
+            "n": 16,
+            "mae": 32.1875,
+            "bias": -3.125,
+            "p90_abs": 55.5,
+            "days": 16,
+            "date_mae": 32.1875
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 22.397155160507964,
+            "bias": -6.267101248021015,
+            "p90_abs": 37.41212984359035,
+            "days": 16,
+            "date_mae": 22.397155160507964
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 22.83008569757991,
+            "bias": -6.790963925026575,
+            "p90_abs": 37.9999999980771,
+            "days": 16,
+            "date_mae": 22.830085697579914
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 30.34375,
+            "bias": -26.40625,
+            "p90_abs": 55.5,
+            "days": 16,
+            "date_mae": 30.34375
+          }
+        }
+      }
+    },
+    {
+      "metric": "静息心率",
+      "unit": "次/分",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 30,
+      "calendar_slots": 31,
+      "longest_slots": 16,
+      "raw_readings_in_longest": 16,
+      "test": {
+        "status": "ridge",
+        "train_slots": 8,
+        "train_pairs": 7,
+        "test_slots": 8,
+        "results": {
+          "historical": {
+            "n": 8,
+            "mae": 7.125,
+            "bias": 3.375,
+            "p90_abs": 10.1,
+            "days": 8,
+            "date_mae": 7.125
+          },
+          "last": {
+            "n": 8,
+            "mae": 9.5,
+            "bias": 0.5,
+            "p90_abs": 17.3,
+            "days": 8,
+            "date_mae": 9.5
+          },
+          "ridge_one_step": {
+            "n": 8,
+            "mae": 6.741218834231804,
+            "bias": 2.4495662061994583,
+            "p90_abs": 10.949359838274933,
+            "days": 8,
+            "date_mae": 6.741218834231804
+          },
+          "ridge_open_loop": {
+            "n": 8,
+            "mae": 6.733186110199155,
+            "bias": 2.598694644240414,
+            "p90_abs": 10.407588227068048,
+            "days": 8,
+            "date_mae": 6.733186110199155
+          },
+          "frozen_last": {
+            "n": 8,
+            "mae": 6.375,
+            "bias": 1.875,
+            "p90_abs": 10.3,
+            "days": 8,
+            "date_mae": 6.375
+          }
+        }
+      }
+    },
+    {
+      "metric": "血氧",
+      "unit": "%",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 924,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 0.5,
+            "bias": -0.1875,
+            "p90_abs": 1.0,
+            "days": 16,
+            "date_mae": 0.5
+          },
+          "last": {
+            "n": 16,
+            "mae": 0.8125,
+            "bias": 0.0,
+            "p90_abs": 1.5,
+            "days": 16,
+            "date_mae": 0.8125
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 1.0246489898989974,
+            "bias": -0.8843961038961119,
+            "p90_abs": 1.6551082251082363,
+            "days": 16,
+            "date_mae": 1.0246489898989974
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 0.9156782906317398,
+            "bias": -0.7293164300344257,
+            "p90_abs": 1.5357146488808553,
+            "days": 16,
+            "date_mae": 0.9156782906317398
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 0.5,
+            "bias": -0.1875,
+            "p90_abs": 1.0,
+            "days": 16,
+            "date_mae": 0.5
+          }
+        }
+      }
+    },
+    {
+      "metric": "压力",
+      "unit": "分",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 1809,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 2.78125,
+            "bias": 1.78125,
+            "p90_abs": 6.5,
+            "days": 16,
+            "date_mae": 2.78125
+          },
+          "last": {
+            "n": 16,
+            "mae": 4.8125,
+            "bias": -0.375,
+            "p90_abs": 7.75,
+            "days": 16,
+            "date_mae": 4.8125
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 2.563566464116923,
+            "bias": 0.8461700226379096,
+            "p90_abs": 5.513969577822788,
+            "days": 16,
+            "date_mae": 2.563566464116923
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 2.548277642230791,
+            "bias": 0.6344801499734851,
+            "p90_abs": 5.499960679453391,
+            "days": 16,
+            "date_mae": 2.548277642230791
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 5.34375,
+            "bias": -5.21875,
+            "p90_abs": 8.5,
+            "days": 16,
+            "date_mae": 5.34375
+          }
+        }
+      }
+    },
+    {
+      "metric": "步数",
+      "unit": "步",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 31,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 2600.4375,
+            "bias": 92.1875,
+            "p90_abs": 5345.0,
+            "days": 16,
+            "date_mae": 2600.4375
+          },
+          "last": {
+            "n": 16,
+            "mae": 3978.0625,
+            "bias": -343.4375,
+            "p90_abs": 8960.5,
+            "days": 16,
+            "date_mae": 3978.0625
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 3195.333263107741,
+            "bias": 645.3168148370038,
+            "p90_abs": 6599.3380628775685,
+            "days": 16,
+            "date_mae": 3195.3332631077405
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 2802.0753597434004,
+            "bias": 1029.8800897474216,
+            "p90_abs": 5345.087391757372,
+            "days": 16,
+            "date_mae": 2802.0753597434
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 3825.9375,
+            "bias": -3824.8125,
+            "p90_abs": 8471.5,
+            "days": 16,
+            "date_mae": 3825.9375
+          }
+        }
+      }
+    },
+    {
+      "metric": "日活动热量",
+      "unit": "千卡",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 31,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 199.875,
+            "bias": -86.375,
+            "p90_abs": 343.0,
+            "days": 16,
+            "date_mae": 199.875
+          },
+          "last": {
+            "n": 16,
+            "mae": 245.1875,
+            "bias": -43.0625,
+            "p90_abs": 424.0,
+            "days": 16,
+            "date_mae": 245.1875
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 197.45894601194064,
+            "bias": -52.18494355728152,
+            "p90_abs": 348.3848717524723,
+            "days": 16,
+            "date_mae": 197.4589460119406
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 190.23662625553806,
+            "bias": -48.25966453836213,
+            "p90_abs": 337.70944336387885,
+            "days": 16,
+            "date_mae": 190.23662625553806
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 432.375,
+            "bias": -432.375,
+            "p90_abs": 669.5,
+            "days": 16,
+            "date_mae": 432.375
+          }
+        }
+      }
+    },
+    {
+      "metric": "运动分钟",
+      "unit": "分钟",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 31,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 31.25,
+            "bias": -21.625,
+            "p90_abs": 58.0,
+            "days": 16,
+            "date_mae": 31.25
+          },
+          "last": {
+            "n": 16,
+            "mae": 34.3125,
+            "bias": -3.3125,
+            "p90_abs": 56.5,
+            "days": 16,
+            "date_mae": 34.3125
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 26.390642910275183,
+            "bias": -10.525727760620146,
+            "p90_abs": 45.96866249341936,
+            "days": 16,
+            "date_mae": 26.390642910275183
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 27.59777961050685,
+            "bias": -12.09428094553466,
+            "p90_abs": 48.19191839510954,
+            "days": 16,
+            "date_mae": 27.597779610506848
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 39.875,
+            "bias": -36.625,
+            "p90_abs": 73.0,
+            "days": 16,
+            "date_mae": 39.875
+          }
+        }
+      }
+    },
+    {
+      "metric": "活动小时",
+      "unit": "小时",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 31,
+      "calendar_slots": 31,
+      "longest_slots": 31,
+      "raw_readings_in_longest": 31,
+      "test": {
+        "status": "ridge",
+        "train_slots": 15,
+        "train_pairs": 14,
+        "test_slots": 16,
+        "results": {
+          "historical": {
+            "n": 16,
+            "mae": 1.875,
+            "bias": -1.875,
+            "p90_abs": 3.5,
+            "days": 16,
+            "date_mae": 1.875
+          },
+          "last": {
+            "n": 16,
+            "mae": 1.4375,
+            "bias": -0.3125,
+            "p90_abs": 3.0,
+            "days": 16,
+            "date_mae": 1.4375
+          },
+          "ridge_one_step": {
+            "n": 16,
+            "mae": 1.476889814221653,
+            "bias": -1.1258648302370284,
+            "p90_abs": 2.7602818705957732,
+            "days": 16,
+            "date_mae": 1.476889814221653
+          },
+          "ridge_open_loop": {
+            "n": 16,
+            "mae": 1.560129087000314,
+            "bias": -1.2879515633445116,
+            "p90_abs": 2.895571202111512,
+            "days": 16,
+            "date_mae": 1.560129087000314
+          },
+          "frozen_last": {
+            "n": 16,
+            "mae": 2.875,
+            "bias": -2.875,
+            "p90_abs": 4.5,
+            "days": 16,
+            "date_mae": 2.875
+          }
+        }
+      }
+    },
+    {
+      "metric": "主睡眠时长",
+      "unit": "分钟",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 10,
+      "calendar_slots": 31,
+      "longest_slots": 8,
+      "raw_readings_in_longest": 8,
+      "test": {
+        "status": "baseline_only",
+        "train_slots": 4,
+        "train_pairs": 0,
+        "test_slots": 4,
+        "results": {
+          "historical": {
+            "n": 4,
+            "mae": 44.5,
+            "bias": 23.0,
+            "p90_abs": 76.7,
+            "days": 4,
+            "date_mae": 44.5
+          },
+          "last": {
+            "n": 4,
+            "mae": 43.25,
+            "bias": -17.75,
+            "p90_abs": 54.5,
+            "days": 4,
+            "date_mae": 43.25
+          },
+          "ridge_one_step": null,
+          "ridge_open_loop": null,
+          "frozen_last": {
+            "n": 4,
+            "mae": 44.5,
+            "bias": -16.5,
+            "p90_abs": 65.0,
+            "days": 4,
+            "date_mae": 44.5
+          }
+        }
+      }
+    },
+    {
+      "metric": "小睡时长",
+      "unit": "分钟",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 12,
+      "calendar_slots": 31,
+      "longest_slots": 8,
+      "raw_readings_in_longest": 9,
+      "test": {
+        "status": "baseline_only",
+        "train_slots": 4,
+        "train_pairs": 0,
+        "test_slots": 4,
+        "results": {
+          "historical": {
+            "n": 4,
+            "mae": 12.25,
+            "bias": -4.5,
+            "p90_abs": 21.1,
+            "days": 4,
+            "date_mae": 12.25
+          },
+          "last": {
+            "n": 4,
+            "mae": 20.0,
+            "bias": -7.5,
+            "p90_abs": 34.800000000000004,
+            "days": 4,
+            "date_mae": 20.0
+          },
+          "ridge_one_step": null,
+          "ridge_open_loop": null,
+          "frozen_last": {
+            "n": 4,
+            "mae": 15.5,
+            "bias": -11.0,
+            "p90_abs": 25.800000000000004,
+            "days": 4,
+            "date_mae": 15.5
+          }
+        }
+      }
+    },
+    {
+      "metric": "体重",
+      "unit": "kg",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 5,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "BMI",
+      "unit": "kg/m²",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 5,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "体脂量",
+      "unit": "kg",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "体脂率",
+      "unit": "%",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "肌肉量",
+      "unit": "kg",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "基础代谢",
+      "unit": "千卡/天",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "水分量",
+      "unit": "kg",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "水分率",
+      "unit": "%",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "骨盐量",
+      "unit": "kg",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "蛋白质率",
+      "unit": "%",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "身体年龄",
+      "unit": "岁",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "身体得分",
+      "unit": "分",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "骨骼肌量",
+      "unit": "kg",
+      "resolution": "day",
+      "min_readings": 1,
+      "observed_slots": 4,
+      "calendar_slots": 31,
+      "longest_slots": 2,
+      "raw_readings_in_longest": 3,
+      "test": {
+        "status": "insufficient",
+        "train_slots": 1,
+        "test_slots": 1
+      }
+    },
+    {
+      "metric": "实时心率",
+      "unit": "次/分",
+      "resolution": "hour",
+      "min_readings": 3,
+      "observed_slots": 508,
+      "calendar_slots": 744,
+      "longest_slots": 49,
+      "raw_readings_in_longest": 859,
+      "test": {
+        "status": "ridge",
+        "train_slots": 24,
+        "train_pairs": 23,
+        "test_slots": 25,
+        "results": {
+          "historical": {
+            "n": 25,
+            "mae": 16.04,
+            "bias": -0.32,
+            "p90_abs": 23.0
+          },
+          "last": {
+            "n": 25,
+            "mae": 8.14,
+            "bias": -0.54,
+            "p90_abs": 17.400000000000013
+          },
+          "ridge_one_step": {
+            "n": 25,
+            "mae": 10.132487908087631,
+            "bias": -1.8981796718074204,
+            "p90_abs": 16.97312168135291
+          },
+          "ridge_open_loop": {
+            "n": 25,
+            "mae": 16.289829818496038,
+            "bias": -3.356923250933615,
+            "p90_abs": 22.554932680699686
+          },
+          "frozen_last": {
+            "n": 25,
+            "mae": 16.7,
+            "bias": -5.82,
+            "p90_abs": 24.700000000000003
+          }
+        },
+        "calendar_test_dates": 2
+      }
+    },
+    {
+      "metric": "血氧",
+      "unit": "%",
+      "resolution": "hour",
+      "min_readings": 3,
+      "observed_slots": 150,
+      "calendar_slots": 744,
+      "longest_slots": 11,
+      "raw_readings_in_longest": 50,
+      "test": {
+        "status": "baseline_only",
+        "train_slots": 5,
+        "train_pairs": 0,
+        "test_slots": 6,
+        "results": {
+          "historical": {
+            "n": 6,
+            "mae": 1.4166666666666667,
+            "bias": 1.4166666666666667,
+            "p90_abs": 2.5
+          },
+          "last": {
+            "n": 6,
+            "mae": 1.1666666666666667,
+            "bias": 0.0,
+            "p90_abs": 2.25
+          },
+          "ridge_one_step": null,
+          "ridge_open_loop": null,
+          "frozen_last": {
+            "n": 6,
+            "mae": 0.5833333333333334,
+            "bias": 0.4166666666666667,
+            "p90_abs": 1.5
+          }
+        },
+        "calendar_test_dates": 1
+      }
+    },
+    {
+      "metric": "压力",
+      "unit": "分",
+      "resolution": "hour",
+      "min_readings": 3,
+      "observed_slots": 354,
+      "calendar_slots": 744,
+      "longest_slots": 18,
+      "raw_readings_in_longest": 87,
+      "test": {
+        "status": "ridge",
+        "train_slots": 9,
+        "train_pairs": 8,
+        "test_slots": 9,
+        "results": {
+          "historical": {
+            "n": 9,
+            "mae": 7.055555555555555,
+            "bias": -6.388888888888889,
+            "p90_abs": 11.000000000000002
+          },
+          "last": {
+            "n": 9,
+            "mae": 5.388888888888889,
+            "bias": -2.388888888888889,
+            "p90_abs": 10.4
+          },
+          "ridge_one_step": {
+            "n": 9,
+            "mae": 5.183174701703566,
+            "bias": -2.86185599006828,
+            "p90_abs": 9.654022346368716
+          },
+          "ridge_open_loop": {
+            "n": 9,
+            "mae": 5.401910771407632,
+            "bias": -3.7471025607307573,
+            "p90_abs": 8.254981104713284
+          },
+          "frozen_last": {
+            "n": 9,
+            "mae": 9.0,
+            "bias": -8.88888888888889,
+            "p90_abs": 13.500000000000002
+          }
+        },
+        "calendar_test_dates": 1
+      }
+    }
+  ],
+  "swim": {
+    "train_swims": 4,
+    "test_swims": 10,
+    "train_dates": 4,
+    "test_dates": 7,
+    "results": {
+      "30": {
+        "train_windows": 289,
+        "strict_test_windows": 432,
+        "issued_in_record": 453,
+        "target_present": 432,
+        "eligible_in_record": 544,
+        "strict": {
+          "persistence": {
+            "n": 432,
+            "mae": 7.686342592592593,
+            "bias": -0.7673611111111112,
+            "p90_abs": 19.5,
+            "within_tolerance": 307,
+            "days": 7,
+            "date_mae": 7.285371436023802
+          },
+          "ridge_v1": {
+            "n": 432,
+            "mae": 7.6300639773553085,
+            "bias": -0.140496636041014,
+            "p90_abs": 16.823209885892062,
+            "within_tolerance": 298,
+            "days": 7,
+            "date_mae": 7.231726928243888
+          },
+          "ridge_weighted": {
+            "n": 432,
+            "mae": 7.627884483491018,
+            "bias": -0.13961018476231773,
+            "p90_abs": 16.813936328809127,
+            "within_tolerance": 298,
+            "days": 7,
+            "date_mae": 7.229552092406302
+          },
+          "kalman": {
+            "n": 432,
+            "mae": 9.145514420209963,
+            "bias": 1.0319932631064583,
+            "p90_abs": 21.010731537379794,
+            "within_tolerance": 269,
+            "days": 7,
+            "date_mae": 8.623641444166015
+          }
+        },
+        "all_observed_sensitivity": {
+          "persistence": {
+            "n": 432,
+            "mae": 7.686342592592593,
+            "bias": -0.7673611111111112,
+            "p90_abs": 19.5,
+            "within_tolerance": 307,
+            "days": 7,
+            "date_mae": 7.285371436023802
+          },
+          "ridge_v1": {
+            "n": 432,
+            "mae": 7.6300639773553085,
+            "bias": -0.140496636041014,
+            "p90_abs": 16.823209885892062,
+            "within_tolerance": 298,
+            "days": 7,
+            "date_mae": 7.231726928243888
+          },
+          "ridge_weighted": {
+            "n": 432,
+            "mae": 7.627884483491018,
+            "bias": -0.13961018476231773,
+            "p90_abs": 16.813936328809127,
+            "within_tolerance": 298,
+            "days": 7,
+            "date_mae": 7.229552092406302
+          },
+          "kalman": {
+            "n": 432,
+            "mae": 9.145514420209963,
+            "bias": 1.0319932631064583,
+            "p90_abs": 21.010731537379794,
+            "within_tolerance": 269,
+            "days": 7,
+            "date_mae": 8.623641444166015
+          }
+        }
+      },
+      "120": {
+        "train_windows": 243,
+        "strict_test_windows": 354,
+        "issued_in_record": 430,
+        "target_present": 391,
+        "eligible_in_record": 514,
+        "strict": {
+          "persistence": {
+            "n": 354,
+            "mae": 11.76271186440678,
+            "bias": -2.638418079096045,
+            "p90_abs": 28.0,
+            "within_tolerance": 201,
+            "days": 7,
+            "date_mae": 11.85221401774997
+          },
+          "ridge_v1": {
+            "n": 354,
+            "mae": 10.091185172868611,
+            "bias": -0.2929957870618365,
+            "p90_abs": 19.900250255076546,
+            "within_tolerance": 215,
+            "days": 7,
+            "date_mae": 9.485944592593295
+          },
+          "ridge_weighted": {
+            "n": 354,
+            "mae": 10.087925604457224,
+            "bias": -0.2906602926181754,
+            "p90_abs": 19.89844699589195,
+            "within_tolerance": 215,
+            "days": 7,
+            "date_mae": 9.482102696249346
+          },
+          "kalman": {
+            "n": 354,
+            "mae": 16.88450042527423,
+            "bias": 4.446172924547838,
+            "p90_abs": 37.67898125502786,
+            "within_tolerance": 158,
+            "days": 7,
+            "date_mae": 16.689298409399537
+          }
+        },
+        "all_observed_sensitivity": {
+          "persistence": {
+            "n": 391,
+            "mae": 11.973145780051151,
+            "bias": -2.1982097186700766,
+            "p90_abs": 27.5,
+            "within_tolerance": 216,
+            "days": 7,
+            "date_mae": 11.828298221233439
+          },
+          "ridge_v1": {
+            "n": 391,
+            "mae": 10.267543718435775,
+            "bias": 0.08072090923721956,
+            "p90_abs": 20.600490107107476,
+            "within_tolerance": 233,
+            "days": 7,
+            "date_mae": 9.500893572987687
+          },
+          "ridge_weighted": {
+            "n": 391,
+            "mae": 10.264744490328827,
+            "bias": 0.08224702259417768,
+            "p90_abs": 20.644209474715524,
+            "within_tolerance": 233,
+            "days": 7,
+            "date_mae": 9.497210813781946
+          },
+          "kalman": {
+            "n": 391,
+            "mae": 16.98398995677499,
+            "bias": 4.146918554780556,
+            "p90_abs": 37.5637480798771,
+            "within_tolerance": 168,
+            "days": 7,
+            "date_mae": 16.434941973171494
+          }
+        }
+      }
+    }
+  },
+  "heat": {
+    "总时长": {
+      "train_n": 4,
+      "test_n": 10,
+      "support_minutes": [
+        38.0,
+        60.0
+      ],
+      "all": {
+        "historical": {
+          "n": 10,
+          "mae": 120.8,
+          "bias": 108.2,
+          "p90_abs": 255.89999999999998,
+          "days": 7,
+          "date_mae": 86.97619047619047
+        },
+        "rate": {
+          "n": 10,
+          "mae": 17.830844553243576,
+          "bias": -0.047307221542231305,
+          "p90_abs": 30.565942472460215,
+          "days": 7,
+          "date_mae": 18.04542606516291
+        },
+        "line": {
+          "n": 10,
+          "mae": 17.33071672354948,
+          "bias": 14.4470989761092,
+          "p90_abs": 30.43805460750851,
+          "days": 7,
+          "date_mae": 14.28412969283276
+        }
+      },
+      "within": {
+        "historical": {
+          "n": 4,
+          "mae": 21.75,
+          "bias": -9.75,
+          "p90_abs": 37.300000000000004,
+          "days": 4,
+          "date_mae": 21.75
+        },
+        "rate": {
+          "n": 4,
+          "mae": 19.06961444308446,
+          "bias": 17.523561811505502,
+          "p90_abs": 33.191217870257056,
+          "days": 4,
+          "date_mae": 19.06961444308446
+        },
+        "line": {
+          "n": 4,
+          "mae": 15.680034129692828,
+          "bias": 13.87286689419794,
+          "p90_abs": 25.682081911262785,
+          "days": 4,
+          "date_mae": 15.680034129692828
+        }
+      }
+    },
+    "活动时间": {
+      "train_n": 4,
+      "test_n": 10,
+      "support_minutes": [
+        38.0,
+        60.0
+      ],
+      "all": {
+        "historical": {
+          "n": 10,
+          "mae": 120.8,
+          "bias": 108.2,
+          "p90_abs": 255.89999999999998,
+          "days": 7,
+          "date_mae": 86.97619047619047
+        },
+        "rate": {
+          "n": 10,
+          "mae": 15.013510911424907,
+          "bias": -8.29874839537869,
+          "p90_abs": 22.756097560975594,
+          "days": 7,
+          "date_mae": 14.305267742527056
+        },
+        "line": {
+          "n": 10,
+          "mae": 15.780167364016725,
+          "bias": 8.778326359832615,
+          "p90_abs": 26.472887029288678,
+          "days": 7,
+          "date_mae": 12.689220960350656
+        }
+      },
+      "within": {
+        "historical": {
+          "n": 4,
+          "mae": 21.75,
+          "bias": -9.75,
+          "p90_abs": 37.300000000000004,
+          "days": 4,
+          "date_mae": 21.75
+        },
+        "rate": {
+          "n": 4,
+          "mae": 9.641928754813875,
+          "bias": -0.9265885750962752,
+          "p90_abs": 14.72952503209245,
+          "days": 4,
+          "date_mae": 9.641928754813875
+        },
+        "line": {
+          "n": 4,
+          "mae": 8.958995815899584,
+          "bias": -2.833891213389137,
+          "p90_abs": 11.899999999999983,
+          "days": 4,
+          "date_mae": 8.958995815899584
+        }
+      }
+    }
+  },
+  "hourly_metric_note": "原程序将小时槽作为日期键，公开汇总仅保留逐小时 MAE 和真实日历日期数。"
+}

@@ -1,0 +1,144 @@
+{
+  "node": "03",
+  "source_run_id": "连续半段-20261109-192322-716804",
+  "atlas_source_run_id": "v2-20261109-170819-386454",
+  "original_workbook_sha256": "f02fe6752388aca08a56eb6c27c3540b8f42188f588494b4175fc94038109c8b",
+  "original_metrics_sha256": "744f8a3ee939f496148f0c85070d5d675147ab2a0de522560387655e8896ac41",
+  "public_files": {
+    "baseline/README.md": {
+      "sha256": "c7b8f809f4a186d84a294aa2ebaaf919c9e5cc6e1ff483f8bbf5afdba802f69c",
+      "git_blob": "336646421e8b4c5fff132bf85f79b840517efd16",
+      "bytes": 3292
+    },
+    "baseline/build.py": {
+      "sha256": "6fadd3c208638c8b28ba931a694efd10a82e9e81c2ac5a47fa80cc770eba61fc",
+      "git_blob": "c020a9e629022e65724948b92d4e720086b7a28e",
+      "bytes": 18070
+    },
+    "baseline/swim.py": {
+      "sha256": "0dde69760f044a72098857aaa63a02710195bcee23c9d5090c7eb5be84da8206",
+      "git_blob": "ec3e8ed90ad6d869f71f6f1bbb79000b66f5e3fd",
+      "bytes": 6839
+    },
+    "baseline/demo.html": {
+      "sha256": "94390502f19d98aaab9752a7e3b7506ca9c5ccc9f7cd90100acb7ff1f4674555",
+      "git_blob": "8506147d900c4741f38fcdfd88f0884c08984401",
+      "bytes": 19577
+    },
+    "baseline/plot_experiments.py": {
+      "sha256": "a8ae0b83dc08f4c2ef42ce6c599cc1b5e4901387e8590fd55140e5df9f9a772e",
+      "git_blob": "a8677c0e180375019d7dce40728d9b928354562c",
+      "bytes": 18416
+    },
+    "baseline/plot_full_atlas.py": {
+      "sha256": "4e9bfe247f80afab821bd620138dcc8a612ea8fea906af688ac0b9bbbaa008cf",
+      "git_blob": "88f44dde183e5c685995ec2a584dfb73c728a726",
+      "bytes": 32571
+    },
+    "baseline/requirements.txt": {
+      "sha256": "349d136bfa99b11c752279a61e790003a2006bb01f304f558f226a205adc46e2",
+      "git_blob": "484730108be0a70bbae092221a16a2ab666b6387",
+      "bytes": 55
+    },
+    "baseline/打开演示.cmd": {
+      "sha256": "c369a077a253e26e89b85071fb50bb426ab159e49027572d5f1f18497386f266",
+      "git_blob": "53dea063a9b6281e183bf8460935ce5e6c1492f8",
+      "bytes": 37
+    },
+    "baseline/v2/chronos_check.py": {
+      "sha256": "6218a8c0fa75255b46455c8eca24619f2fe132b0a20f6fa599ad127c5d31d0a7",
+      "git_blob": "7a6d136745be8857998ff57b2306d27c57a4d43d",
+      "bytes": 4430
+    },
+    "baseline/v2/continuous_half.py": {
+      "sha256": "c8be6153f8464bc4de5bc047f9fdc8484abd4cfa614bd07de85043b5febe9bc1",
+      "git_blob": "c6debc951a2c78d73d93093325daa55fa3a8cc2d",
+      "bytes": 12724
+    },
+    "baseline/v2/continuous_half_figures.py": {
+      "sha256": "f461dd96b89321794e6825bb767069cb09570ef16d8549ce99bc525ab2df46a9",
+      "git_blob": "501d4aee83e5f5d311ce44cfbe4c6f7ba02c336e",
+      "bytes": 10412
+    },
+    "baseline/v2/evaluate.py": {
+      "sha256": "bb569db1bc00391f7d707ca2142bd970491988f739db85d9b1c9aa2f5eaec2a0",
+      "git_blob": "58de7150ba298e5f6dc11fa88e71ff3221f668f6",
+      "bytes": 2416
+    },
+    "baseline/v2/heart.py": {
+      "sha256": "4a625fde3922ac425538c46d97076842d4d71b72ac981743cbda05dfd2b3c7ac",
+      "git_blob": "567f65c53afb5ec0ea8f13eb76d1d26dd2dcd19e",
+      "bytes": 4407
+    },
+    "baseline/v2/heat.py": {
+      "sha256": "0c2d08bb284ee70e21bd6056545b09d0e768cc849c17b07659b5955bd470b723",
+      "git_blob": "eb6b12bec75af9e050bbb7d1fbd41bdfef9c98a6",
+      "bytes": 2775
+    },
+    "baseline/v2/replay.py": {
+      "sha256": "3fe8e6e0b1233836ff7ac5baf59ae14ed298e971033f7e742db95a2e2b59a20d",
+      "git_blob": "a47c736490569217c2097da1fbc51dd343b740c2",
+      "bytes": 7980
+    },
+    "baseline/v2/run.py": {
+      "sha256": "e7e60773f3c1ede868289128c55b8b336ff58428499a6f31f00d764d0caa3e2e",
+      "git_blob": "c5aba33bf51bf6a54275cd81146eaf7bc5517ec9",
+      "bytes": 8346
+    },
+    "baseline/v2/verify.py": {
+      "sha256": "fabe222d13781b42e3dd992842860dfc6e400531f79e57889a624ea721956552",
+      "git_blob": "f8313460953c450d69cb3992a1ff7e90da32d7cd",
+      "bytes": 2481
+    },
+    "baseline/v2/README.md": {
+      "sha256": "5ffdfb71c6a58a79d98182fb87ba11654dda954a617f25380c7d652a8a8086e6",
+      "git_blob": "e99b1cd37f1dacb552946b90797e12f84598b8e5",
+      "bytes": 2617
+    },
+    "baseline/v2/protocol.json": {
+      "sha256": "1b3cb2c964ba7db1b4da0a59573939da9dd845df9ccab84901a640ee0ac8aa28",
+      "git_blob": "3b343f07876a0f9be62076b11ba31517f6602cf4",
+      "bytes": 786
+    },
+    "baseline/v2/ui.js": {
+      "sha256": "31a3a19365dee3ec60da66eb5df6a5c38cbdcdc2a9ae342f2e721656946947e8",
+      "git_blob": "d83ef3d032ef07fe18bf462e5c98d4258c3af8a8",
+      "bytes": 3429
+    },
+    "baseline/vendor/EpiCoach-LICENSE": {
+      "sha256": "00eb0d236b5c6343613f04aba64c841605fa8c164d841ec6a2ab7aeeeb1b6923",
+      "git_blob": "19226c360ea135dc728cb0ed675c19d185576e3f",
+      "bytes": 1091
+    },
+    "baseline/vendor/garmin_lab/registry/__init__.py": {
+      "sha256": "8ac5086ae180fd43e7dff68555cfc687201fab2a47817c36cb23c78ea2d128db",
+      "git_blob": "7fb810e1a2e8d85ea602a0e57f577cf7eef101a5",
+      "bytes": 191
+    },
+    "baseline/vendor/garmin_lab/registry/store.py": {
+      "sha256": "0a5024b59ed577284c53bfafb2c2f1b5c609f1c402c64f7b5a61d4db75430acf",
+      "git_blob": "f7f383452345834778cec63e44c94c383ae24236",
+      "bytes": 20684
+    },
+    "baseline/v2/results/continuous_half_summary.json": {
+      "sha256": "6922b3f4a1348c505757ec2af2549c5cc9c8223113fee67e9b9960938d6fd31f",
+      "git_blob": "abdb33cc15be258dd54335c241054195065f7422",
+      "bytes": 30769
+    },
+    "baseline/v2/results/continuous_half_coverage.csv": {
+      "sha256": "ec3a26c31d8f26cb303f03b052518a5537338a7ba505ac0377a5a22c2d589b5d",
+      "git_blob": "2efdc0da1341cbc5fb0638b70b25663360b6b6fe",
+      "bytes": 951
+    },
+    "baseline/data/field_coverage.csv": {
+      "sha256": "9bc674dc010785c9c301500a571028ae0ad6924167bbbe0c765a580240134804",
+      "git_blob": "254eb61f3a5b235bf30a8bd4de94789122f3b007",
+      "bytes": 4782
+    },
+    "baseline/v2/results/continuous_half.md": {
+      "sha256": "b40dfa0e89a94157865a1a947d5ed49c7a1314cdda4c952664590363086e3a68",
+      "git_blob": "ea2b0ac213be43e8480b23eabc55e77d7404a929",
+      "bytes": 1664
+    }
+  }
+}
