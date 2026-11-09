@@ -1,0 +1,23 @@
+{
+  "node": "04",
+  "version": "V3.0",
+  "status": "plan_ready_experiments_pending",
+  "original_plan_sha256": {
+    "00_方案版本与执行顺序索引.md": "1a09f70f1d13168a53b4f27a8cad446cc247b6cba5fc6768ce0cfe990aa762af",
+    "04_V3.0_数据口径修正与受控预测优化实施方案_2026-11-09.md": "624499fd5d87e385a10095236b8f2717f099efb6d6cb89cb168f2efe0266e71e"
+  },
+  "public_plan_files": {
+    "baseline/docs/plans/00_方案版本与执行顺序索引.md": {
+      "sha256": "1033abd38e4a1192a3ea5f94036db4307934458f582e109dcb525489b1c390bb",
+      "git_blob": "e22a08670271c037717c7ecf8d2f94716c295df1",
+      "bytes": 3494
+    },
+    "baseline/docs/plans/04_V3.0_数据口径修正与受控预测优化实施方案_2026-11-09.md": {
+      "sha256": "3971596c63b8ba4fd3f78ac3dfe04f4d32c5b32d45d4c7b1aa7e527f0e9a4797",
+      "git_blob": "b152beb5e86a4eaf9d232bfedb3f1869b4ff05b0",
+      "bytes": 47032
+    }
+  },
+  "source_workbook_sha256": "f02fe6752388aca08a56eb6c27c3540b8f42188f588494b4175fc94038109c8b",
+  "previous_experiment": "../../v2/results/continuous_half_manifest.json"
+}
