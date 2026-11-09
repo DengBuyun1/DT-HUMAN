@@ -1,0 +1,1368 @@
+{
+  "protocol": {
+    "design": "exploratory chronological replay of the previously inspected single-subject workbook",
+    "heart_warmup_dates": 6,
+    "heart_inner_warmup_dates": 4,
+    "heart_window_seconds": 30,
+    "heart_horizons_seconds": [
+      30,
+      120
+    ],
+    "ridge_alphas": [
+      5,
+      15,
+      50
+    ],
+    "kalman_slope_variances": [
+      0.01,
+      0.05,
+      0.2
+    ],
+    "kalman_level_variance": 0.1,
+    "chronos_context_windows": [
+      3,
+      10,
+      20
+    ],
+    "chronos_lora_trigger": "at least 5% lower matched date MAE than ridge_v1 and wins on a majority of the development dates, at baseline coverage",
+    "heat_warmup_dates": 4,
+    "min_relative_gain": 0.05,
+    "min_reference_error_dates": 3,
+    "seed": 20261109,
+    "adoption": "same scored windows; at least 5% date MAE improvement, strict majority of dates won, no P90 deterioration, and no coverage loss"
+  },
+  "coverage": {
+    "swims": 14,
+    "swim_dates": 11,
+    "source_rows": 30940,
+    "sheet_rows": {
+      "心率": 19454,
+      "预警数据": 377,
+      "睡眠": 24,
+      "血氧饱和度": 924,
+      "日常活动": 3798,
+      "单次运动": 21,
+      "压力": 1809,
+      "体温": 0,
+      "血糖": 0,
+      "血脂": 0,
+      "血压": 0,
+      "体重": 10,
+      "活动统计": 31,
+      "ecg心电图": 0,
+      "日常活动状态": 4492
+    }
+  },
+  "baseline_reproduction": "matches_archived_metrics",
+  "heart": {
+    "30": {
+      "model": "persistence",
+      "eligible": 399,
+      "issued": 332,
+      "missing_target": 15,
+      "outside_recording_issued": 6,
+      "metrics": {
+        "persistence": {
+          "n": 317,
+          "days": 5,
+          "mae": 8.110410094637224,
+          "date_mae": 8.006200172376642,
+          "bias": -0.7413249211356467,
+          "p90_abs": 20.200000000000017,
+          "max_abs": 34.5,
+          "within_tolerance": 220
+        },
+        "ridge_v1": {
+          "n": 317,
+          "days": 5,
+          "mae": 7.689622521015836,
+          "date_mae": 7.426513971047135,
+          "bias": 0.36966483020677987,
+          "p90_abs": 16.91421178246612,
+          "max_abs": 26.86892531643312,
+          "within_tolerance": 221
+        },
+        "ridge": {
+          "n": 317,
+          "days": 5,
+          "mae": 7.726326170693342,
+          "date_mae": 7.472036297657883,
+          "bias": 0.3404852431774905,
+          "p90_abs": 16.906467809444713,
+          "max_abs": 27.43071538684302,
+          "within_tolerance": 217
+        },
+        "kalman": {
+          "n": 317,
+          "days": 5,
+          "mae": 9.616673287695518,
+          "date_mae": 9.63339271543379,
+          "bias": 1.2897460644757979,
+          "p90_abs": 21.41937886227084,
+          "max_abs": 42.367975159713,
+          "within_tolerance": 191
+        }
+      },
+      "comparisons": {
+        "ridge_v1": {
+          "candidate": "ridge_v1",
+          "reference": "persistence",
+          "issued_candidate": 332,
+          "issued_reference": 332,
+          "coverage_ok": true,
+          "passed": true,
+          "candidate_metrics": {
+            "n": 317,
+            "days": 5,
+            "mae": 7.689622521015836,
+            "date_mae": 7.426513971047135,
+            "bias": 0.36966483020677987,
+            "p90_abs": 16.91421178246612,
+            "max_abs": 26.86892531643312
+          },
+          "reference_metrics": {
+            "n": 317,
+            "days": 5,
+            "mae": 8.110410094637224,
+            "date_mae": 8.006200172376642,
+            "bias": -0.7413249211356467,
+            "p90_abs": 20.200000000000017,
+            "max_abs": 34.5
+          },
+          "gain": 0.0724046599945836,
+          "wins": 4,
+          "days": 5,
+          "tail_ok": true
+        },
+        "ridge": {
+          "candidate": "ridge",
+          "reference": "persistence",
+          "issued_candidate": 332,
+          "issued_reference": 332,
+          "coverage_ok": true,
+          "passed": true,
+          "candidate_metrics": {
+            "n": 317,
+            "days": 5,
+            "mae": 7.726326170693342,
+            "date_mae": 7.472036297657883,
+            "bias": 0.3404852431774905,
+            "p90_abs": 16.906467809444713,
+            "max_abs": 27.43071538684302
+          },
+          "reference_metrics": {
+            "n": 317,
+            "days": 5,
+            "mae": 8.110410094637224,
+            "date_mae": 8.006200172376642,
+            "bias": -0.7413249211356467,
+            "p90_abs": 20.200000000000017,
+            "max_abs": 34.5
+          },
+          "gain": 0.06671877585096557,
+          "wins": 3,
+          "days": 5,
+          "tail_ok": true
+        },
+        "kalman": {
+          "candidate": "kalman",
+          "reference": "persistence",
+          "issued_candidate": 332,
+          "issued_reference": 332,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 317,
+            "days": 5,
+            "mae": 9.616673287695518,
+            "date_mae": 9.63339271543379,
+            "bias": 1.2897460644757979,
+            "p90_abs": 21.41937886227084,
+            "max_abs": 42.367975159713
+          },
+          "reference_metrics": {
+            "n": 317,
+            "days": 5,
+            "mae": 8.110410094637224,
+            "date_mae": 8.006200172376642,
+            "bias": -0.7413249211356467,
+            "p90_abs": 20.200000000000017,
+            "max_abs": 34.5
+          },
+          "gain": -0.20324155130062332,
+          "wins": 0,
+          "days": 5,
+          "tail_ok": false
+        }
+      },
+      "empirical_band": {
+        "n": 165,
+        "days": 2,
+        "hits": 137,
+        "mean_width": 28.1160606060606
+      },
+      "recommended_next_model": "ridge_v1"
+    },
+    "120": {
+      "model": "ridge_v1",
+      "eligible": 375,
+      "issued": 312,
+      "missing_target": 28,
+      "outside_recording_issued": 26,
+      "metrics": {
+        "persistence": {
+          "n": 284,
+          "days": 5,
+          "mae": 11.85387323943662,
+          "date_mae": 12.425423456518677,
+          "bias": -2.413732394366197,
+          "p90_abs": 26.85000000000001,
+          "max_abs": 47.0,
+          "within_tolerance": 155
+        },
+        "ridge_v1": {
+          "n": 284,
+          "days": 5,
+          "mae": 10.136264253903708,
+          "date_mae": 9.423244417709784,
+          "bias": 0.7025584116761325,
+          "p90_abs": 19.896602296668664,
+          "max_abs": 37.51427573702662,
+          "within_tolerance": 167
+        },
+        "ridge": {
+          "n": 284,
+          "days": 5,
+          "mae": 10.146747838493598,
+          "date_mae": 9.446233882097179,
+          "bias": 0.693549816436551,
+          "p90_abs": 19.938611370357577,
+          "max_abs": 37.42389701493673,
+          "within_tolerance": 167
+        },
+        "kalman": {
+          "n": 284,
+          "days": 5,
+          "mae": 14.743343281658694,
+          "date_mae": 15.506162456340345,
+          "bias": 5.305605269826002,
+          "p90_abs": 32.61553967624239,
+          "max_abs": 62.16243128306192,
+          "within_tolerance": 121
+        }
+      },
+      "comparisons": {
+        "persistence": {
+          "candidate": "persistence",
+          "reference": "ridge_v1",
+          "issued_candidate": 312,
+          "issued_reference": 312,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 284,
+            "days": 5,
+            "mae": 11.85387323943662,
+            "date_mae": 12.425423456518677,
+            "bias": -2.413732394366197,
+            "p90_abs": 26.85000000000001,
+            "max_abs": 47.0
+          },
+          "reference_metrics": {
+            "n": 284,
+            "days": 5,
+            "mae": 10.136264253903708,
+            "date_mae": 9.423244417709784,
+            "bias": 0.7025584116761325,
+            "p90_abs": 19.896602296668664,
+            "max_abs": 37.51427573702662
+          },
+          "gain": -0.31859292890320046,
+          "wins": 1,
+          "days": 5,
+          "tail_ok": false
+        },
+        "ridge": {
+          "candidate": "ridge",
+          "reference": "ridge_v1",
+          "issued_candidate": 312,
+          "issued_reference": 312,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 284,
+            "days": 5,
+            "mae": 10.146747838493598,
+            "date_mae": 9.446233882097179,
+            "bias": 0.693549816436551,
+            "p90_abs": 19.938611370357577,
+            "max_abs": 37.42389701493673
+          },
+          "reference_metrics": {
+            "n": 284,
+            "days": 5,
+            "mae": 10.136264253903708,
+            "date_mae": 9.423244417709784,
+            "bias": 0.7025584116761325,
+            "p90_abs": 19.896602296668664,
+            "max_abs": 37.51427573702662
+          },
+          "gain": -0.0024396548967985346,
+          "wins": 2,
+          "days": 5,
+          "tail_ok": false
+        },
+        "kalman": {
+          "candidate": "kalman",
+          "reference": "ridge_v1",
+          "issued_candidate": 312,
+          "issued_reference": 312,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 284,
+            "days": 5,
+            "mae": 14.743343281658694,
+            "date_mae": 15.506162456340345,
+            "bias": 5.305605269826002,
+            "p90_abs": 32.61553967624239,
+            "max_abs": 62.16243128306192
+          },
+          "reference_metrics": {
+            "n": 284,
+            "days": 5,
+            "mae": 10.136264253903708,
+            "date_mae": 9.423244417709784,
+            "bias": 0.7025584116761325,
+            "p90_abs": 19.896602296668664,
+            "max_abs": 37.51427573702662
+          },
+          "gain": -0.645522685074208,
+          "wins": 0,
+          "days": 5,
+          "tail_ok": false
+        }
+      },
+      "empirical_band": {
+        "n": 149,
+        "days": 2,
+        "hits": 120,
+        "mean_width": 33.184718299829335
+      },
+      "recommended_next_model": "ridge_v1"
+    }
+  },
+  "heart_ledger": {
+    "issued": 676,
+    "scored": 601,
+    "withdrawn": 75
+  },
+  "heat_total": {
+    "model": "rate",
+    "support": [
+      6.0,
+      60.0
+    ],
+    "metrics": {
+      "historical": {
+        "n": 10,
+        "days": 7,
+        "mae": 120.6,
+        "date_mae": 90.11904761904762,
+        "bias": 96.4,
+        "p90_abs": 255.89999999999998,
+        "max_abs": 300.0
+      },
+      "rate": {
+        "n": 10,
+        "days": 7,
+        "mae": 18.26040391676866,
+        "date_mae": 18.62172874045578,
+        "bias": 1.1163402692778361,
+        "p90_abs": 30.70055079559362,
+        "max_abs": 40.1395348837209
+      },
+      "line": {
+        "n": 10,
+        "days": 7,
+        "mae": 21.789681033341395,
+        "date_mae": 16.776995869154447,
+        "bias": 14.932715675102838,
+        "p90_abs": 38.92240124740124,
+        "max_abs": 65.9537422037422
+      },
+      "legacy_selected": {
+        "n": 10,
+        "days": 7,
+        "mae": 18.87886728782286,
+        "date_mae": 19.505247841961783,
+        "bias": 0.4978768982236346,
+        "p90_abs": 30.70055079559362,
+        "max_abs": 40.1395348837209
+      }
+    },
+    "subgroups": {
+      "all": {
+        "historical": {
+          "n": 10,
+          "days": 7,
+          "mae": 120.6,
+          "date_mae": 90.11904761904762,
+          "bias": 96.4,
+          "p90_abs": 255.89999999999998,
+          "max_abs": 300.0
+        },
+        "rate": {
+          "n": 10,
+          "days": 7,
+          "mae": 18.26040391676866,
+          "date_mae": 18.62172874045578,
+          "bias": 1.1163402692778361,
+          "p90_abs": 30.70055079559362,
+          "max_abs": 40.1395348837209
+        },
+        "line": {
+          "n": 10,
+          "days": 7,
+          "mae": 21.789681033341395,
+          "date_mae": 16.776995869154447,
+          "bias": 14.932715675102838,
+          "p90_abs": 38.92240124740124,
+          "max_abs": 65.9537422037422
+        },
+        "legacy_selected": {
+          "n": 10,
+          "days": 7,
+          "mae": 18.87886728782286,
+          "date_mae": 19.505247841961783,
+          "bias": 0.4978768982236346,
+          "p90_abs": 30.70055079559362,
+          "max_abs": 40.1395348837209
+        }
+      },
+      "in": {
+        "historical": {
+          "n": 6,
+          "days": 5,
+          "mae": 48.666666666666664,
+          "date_mae": 47.9,
+          "bias": 8.333333333333334,
+          "p90_abs": 85.5,
+          "max_abs": 93.0
+        },
+        "rate": {
+          "n": 6,
+          "days": 5,
+          "mae": 17.972664218686237,
+          "date_mae": 17.132313341493255,
+          "bias": 8.980824153406758,
+          "p90_abs": 31.6395348837209,
+          "max_abs": 40.1395348837209
+        },
+        "line": {
+          "n": 6,
+          "days": 5,
+          "mae": 13.9181267821341,
+          "date_mae": 13.425291703801767,
+          "bias": 5.248099194171094,
+          "p90_abs": 22.370263993194996,
+          "max_abs": 26.91507893304299
+        },
+        "legacy_selected": {
+          "n": 6,
+          "days": 5,
+          "mae": 19.003436503776573,
+          "date_mae": 18.36924008360166,
+          "bias": 7.950051868316422,
+          "p90_abs": 31.6395348837209,
+          "max_abs": 40.1395348837209
+        }
+      },
+      "out": {
+        "historical": {
+          "n": 4,
+          "days": 2,
+          "mae": 228.5,
+          "date_mae": 195.66666666666666,
+          "bias": 228.5,
+          "p90_abs": 285.3,
+          "max_abs": 300.0
+        },
+        "rate": {
+          "n": 4,
+          "days": 2,
+          "mae": 18.692013463892287,
+          "date_mae": 22.345267237862092,
+          "bias": -10.680385556915546,
+          "p90_abs": 26.64461444308445,
+          "max_abs": 29.651774785801706
+        },
+        "line": {
+          "n": 4,
+          "days": 2,
+          "mae": 33.597012410152345,
+          "date_mae": 25.15625628253615,
+          "bias": 29.459640396500458,
+          "p90_abs": 56.94329521829522,
+          "max_abs": 65.9537422037422
+        },
+        "legacy_selected": {
+          "n": 4,
+          "days": 2,
+          "mae": 18.692013463892287,
+          "date_mae": 22.345267237862092,
+          "bias": -10.680385556915546,
+          "p90_abs": 26.64461444308445,
+          "max_abs": 29.651774785801706
+        }
+      }
+    },
+    "comparisons": {
+      "all": {
+        "line": {
+          "candidate": "line",
+          "reference": "rate",
+          "issued_candidate": 10,
+          "issued_reference": 10,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 21.789681033341395,
+            "date_mae": 16.776995869154447,
+            "bias": 14.932715675102838,
+            "p90_abs": 38.92240124740124,
+            "max_abs": 65.9537422037422
+          },
+          "reference_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 18.26040391676866,
+            "date_mae": 18.62172874045578,
+            "bias": 1.1163402692778361,
+            "p90_abs": 30.70055079559362,
+            "max_abs": 40.1395348837209
+          },
+          "gain": 0.09906345952154498,
+          "wins": 4,
+          "days": 7,
+          "tail_ok": false
+        },
+        "legacy_selected": {
+          "candidate": "legacy_selected",
+          "reference": "rate",
+          "issued_candidate": 10,
+          "issued_reference": 10,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 18.87886728782286,
+            "date_mae": 19.505247841961783,
+            "bias": 0.4978768982236346,
+            "p90_abs": 30.70055079559362,
+            "max_abs": 40.1395348837209
+          },
+          "reference_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 18.26040391676866,
+            "date_mae": 18.62172874045578,
+            "bias": 1.1163402692778361,
+            "p90_abs": 30.70055079559362,
+            "max_abs": 40.1395348837209
+          },
+          "gain": -0.04744560044989564,
+          "wins": 0,
+          "days": 7,
+          "tail_ok": true
+        }
+      },
+      "in": {
+        "line": {
+          "candidate": "line",
+          "reference": "rate",
+          "issued_candidate": 6,
+          "issued_reference": 6,
+          "coverage_ok": true,
+          "passed": true,
+          "candidate_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 13.9181267821341,
+            "date_mae": 13.425291703801767,
+            "bias": 5.248099194171094,
+            "p90_abs": 22.370263993194996,
+            "max_abs": 26.91507893304299
+          },
+          "reference_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 17.972664218686237,
+            "date_mae": 17.132313341493255,
+            "bias": 8.980824153406758,
+            "p90_abs": 31.6395348837209,
+            "max_abs": 40.1395348837209
+          },
+          "gain": 0.21637601203063123,
+          "wins": 3,
+          "days": 5,
+          "tail_ok": true
+        },
+        "legacy_selected": {
+          "candidate": "legacy_selected",
+          "reference": "rate",
+          "issued_candidate": 6,
+          "issued_reference": 6,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 19.003436503776573,
+            "date_mae": 18.36924008360166,
+            "bias": 7.950051868316422,
+            "p90_abs": 31.6395348837209,
+            "max_abs": 40.1395348837209
+          },
+          "reference_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 17.972664218686237,
+            "date_mae": 17.132313341493255,
+            "bias": 8.980824153406758,
+            "p90_abs": 31.6395348837209,
+            "max_abs": 40.1395348837209
+          },
+          "gain": -0.07219846598956697,
+          "wins": 0,
+          "days": 5,
+          "tail_ok": true
+        }
+      },
+      "out": {
+        "line": {
+          "candidate": "line",
+          "reference": "rate",
+          "issued_candidate": 4,
+          "issued_reference": 4,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 33.597012410152345,
+            "date_mae": 25.15625628253615,
+            "bias": 29.459640396500458,
+            "p90_abs": 56.94329521829522,
+            "max_abs": 65.9537422037422
+          },
+          "reference_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 18.692013463892287,
+            "date_mae": 22.345267237862092,
+            "bias": -10.680385556915546,
+            "p90_abs": 26.64461444308445,
+            "max_abs": 29.651774785801706
+          },
+          "gain": -0.1257979604697269,
+          "wins": 1,
+          "days": 2,
+          "tail_ok": false
+        },
+        "legacy_selected": {
+          "candidate": "legacy_selected",
+          "reference": "rate",
+          "issued_candidate": 4,
+          "issued_reference": 4,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 18.692013463892287,
+            "date_mae": 22.345267237862092,
+            "bias": -10.680385556915546,
+            "p90_abs": 26.64461444308445,
+            "max_abs": 29.651774785801706
+          },
+          "reference_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 18.692013463892287,
+            "date_mae": 22.345267237862092,
+            "bias": -10.680385556915546,
+            "p90_abs": 26.64461444308445,
+            "max_abs": 29.651774785801706
+          },
+          "gain": 0.0,
+          "wins": 0,
+          "days": 2,
+          "tail_ok": true
+        }
+      }
+    },
+    "decision": {
+      "passed": false
+    },
+    "duration_column": "I",
+    "sample_count": 14
+  },
+  "heat_active": {
+    "model": "rate",
+    "support": [
+      6.0,
+      60.0
+    ],
+    "metrics": {
+      "historical": {
+        "n": 10,
+        "days": 7,
+        "mae": 120.6,
+        "date_mae": 90.11904761904762,
+        "bias": 96.4,
+        "p90_abs": 255.89999999999998,
+        "max_abs": 300.0
+      },
+      "rate": {
+        "n": 10,
+        "days": 7,
+        "mae": 14.102290852975727,
+        "date_mae": 13.551385924593534,
+        "bias": -5.649358834293842,
+        "p90_abs": 25.199903722721434,
+        "max_abs": 35.99903722721439
+      },
+      "line": {
+        "n": 10,
+        "days": 7,
+        "mae": 19.48664990801359,
+        "date_mae": 15.68668193916601,
+        "bias": 9.878212412889075,
+        "p90_abs": 30.98215041625511,
+        "max_abs": 63.18569211231835
+      },
+      "legacy_selected": {
+        "n": 10,
+        "days": 7,
+        "mae": 14.102290852975727,
+        "date_mae": 13.551385924593534,
+        "bias": -5.649358834293842,
+        "p90_abs": 25.199903722721434,
+        "max_abs": 35.99903722721439
+      }
+    },
+    "subgroups": {
+      "all": {
+        "historical": {
+          "n": 10,
+          "days": 7,
+          "mae": 120.6,
+          "date_mae": 90.11904761904762,
+          "bias": 96.4,
+          "p90_abs": 255.89999999999998,
+          "max_abs": 300.0
+        },
+        "rate": {
+          "n": 10,
+          "days": 7,
+          "mae": 14.102290852975727,
+          "date_mae": 13.551385924593534,
+          "bias": -5.649358834293842,
+          "p90_abs": 25.199903722721434,
+          "max_abs": 35.99903722721439
+        },
+        "line": {
+          "n": 10,
+          "days": 7,
+          "mae": 19.48664990801359,
+          "date_mae": 15.68668193916601,
+          "bias": 9.878212412889075,
+          "p90_abs": 30.98215041625511,
+          "max_abs": 63.18569211231835
+        },
+        "legacy_selected": {
+          "n": 10,
+          "days": 7,
+          "mae": 14.102290852975727,
+          "date_mae": 13.551385924593534,
+          "bias": -5.649358834293842,
+          "p90_abs": 25.199903722721434,
+          "max_abs": 35.99903722721439
+        }
+      },
+      "in": {
+        "historical": {
+          "n": 6,
+          "days": 5,
+          "mae": 48.666666666666664,
+          "date_mae": 47.9,
+          "bias": 8.333333333333334,
+          "p90_abs": 85.5,
+          "max_abs": 93.0
+        },
+        "rate": {
+          "n": 6,
+          "days": 5,
+          "mae": 8.912644871129572,
+          "date_mae": 8.335599377270375,
+          "bias": -0.39975782736552407,
+          "p90_abs": 21.489361702127667,
+          "max_abs": 24.0
+        },
+        "line": {
+          "n": 6,
+          "days": 5,
+          "mae": 11.705188461285857,
+          "date_mae": 12.129206032358619,
+          "bias": -0.5010637098072976,
+          "p90_abs": 16.80618712721784,
+          "max_abs": 17.905359977588944
+        },
+        "legacy_selected": {
+          "n": 6,
+          "days": 5,
+          "mae": 8.912644871129572,
+          "date_mae": 8.335599377270375,
+          "bias": -0.39975782736552407,
+          "p90_abs": 21.489361702127667,
+          "max_abs": 24.0
+        }
+      },
+      "out": {
+        "historical": {
+          "n": 4,
+          "days": 2,
+          "mae": 228.5,
+          "date_mae": 195.66666666666666,
+          "bias": 228.5,
+          "p90_abs": 285.3,
+          "max_abs": 300.0
+        },
+        "rate": {
+          "n": 4,
+          "days": 2,
+          "mae": 21.886759825744956,
+          "date_mae": 26.59085229290143,
+          "bias": -13.52376034468632,
+          "p90_abs": 30.736326577991434,
+          "max_abs": 35.99903722721439
+        },
+        "line": {
+          "n": 4,
+          "days": 2,
+          "mae": 31.158842078105188,
+          "date_mae": 24.580371706184494,
+          "bias": 25.447126596933636,
+          "p90_abs": 52.45117821363061,
+          "max_abs": 63.18569211231835
+        },
+        "legacy_selected": {
+          "n": 4,
+          "days": 2,
+          "mae": 21.886759825744956,
+          "date_mae": 26.59085229290143,
+          "bias": -13.52376034468632,
+          "p90_abs": 30.736326577991434,
+          "max_abs": 35.99903722721439
+        }
+      }
+    },
+    "comparisons": {
+      "all": {
+        "line": {
+          "candidate": "line",
+          "reference": "rate",
+          "issued_candidate": 10,
+          "issued_reference": 10,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 19.48664990801359,
+            "date_mae": 15.68668193916601,
+            "bias": 9.878212412889075,
+            "p90_abs": 30.98215041625511,
+            "max_abs": 63.18569211231835
+          },
+          "reference_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 14.102290852975727,
+            "date_mae": 13.551385924593534,
+            "bias": -5.649358834293842,
+            "p90_abs": 25.199903722721434,
+            "max_abs": 35.99903722721439
+          },
+          "gain": -0.15757030509309503,
+          "wins": 3,
+          "days": 7,
+          "tail_ok": false
+        },
+        "legacy_selected": {
+          "candidate": "legacy_selected",
+          "reference": "rate",
+          "issued_candidate": 10,
+          "issued_reference": 10,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 14.102290852975727,
+            "date_mae": 13.551385924593534,
+            "bias": -5.649358834293842,
+            "p90_abs": 25.199903722721434,
+            "max_abs": 35.99903722721439
+          },
+          "reference_metrics": {
+            "n": 10,
+            "days": 7,
+            "mae": 14.102290852975727,
+            "date_mae": 13.551385924593534,
+            "bias": -5.649358834293842,
+            "p90_abs": 25.199903722721434,
+            "max_abs": 35.99903722721439
+          },
+          "gain": 0.0,
+          "wins": 0,
+          "days": 7,
+          "tail_ok": true
+        }
+      },
+      "in": {
+        "line": {
+          "candidate": "line",
+          "reference": "rate",
+          "issued_candidate": 6,
+          "issued_reference": 6,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 11.705188461285857,
+            "date_mae": 12.129206032358619,
+            "bias": -0.5010637098072976,
+            "p90_abs": 16.80618712721784,
+            "max_abs": 17.905359977588944
+          },
+          "reference_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 8.912644871129572,
+            "date_mae": 8.335599377270375,
+            "bias": -0.39975782736552407,
+            "p90_abs": 21.489361702127667,
+            "max_abs": 24.0
+          },
+          "gain": -0.45510904296009014,
+          "wins": 2,
+          "days": 5,
+          "tail_ok": true
+        },
+        "legacy_selected": {
+          "candidate": "legacy_selected",
+          "reference": "rate",
+          "issued_candidate": 6,
+          "issued_reference": 6,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 8.912644871129572,
+            "date_mae": 8.335599377270375,
+            "bias": -0.39975782736552407,
+            "p90_abs": 21.489361702127667,
+            "max_abs": 24.0
+          },
+          "reference_metrics": {
+            "n": 6,
+            "days": 5,
+            "mae": 8.912644871129572,
+            "date_mae": 8.335599377270375,
+            "bias": -0.39975782736552407,
+            "p90_abs": 21.489361702127667,
+            "max_abs": 24.0
+          },
+          "gain": 0.0,
+          "wins": 0,
+          "days": 5,
+          "tail_ok": true
+        }
+      },
+      "out": {
+        "line": {
+          "candidate": "line",
+          "reference": "rate",
+          "issued_candidate": 4,
+          "issued_reference": 4,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 31.158842078105188,
+            "date_mae": 24.580371706184494,
+            "bias": 25.447126596933636,
+            "p90_abs": 52.45117821363061,
+            "max_abs": 63.18569211231835
+          },
+          "reference_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 21.886759825744956,
+            "date_mae": 26.59085229290143,
+            "bias": -13.52376034468632,
+            "p90_abs": 30.736326577991434,
+            "max_abs": 35.99903722721439
+          },
+          "gain": 0.0756079784345102,
+          "wins": 1,
+          "days": 2,
+          "tail_ok": false
+        },
+        "legacy_selected": {
+          "candidate": "legacy_selected",
+          "reference": "rate",
+          "issued_candidate": 4,
+          "issued_reference": 4,
+          "coverage_ok": true,
+          "passed": false,
+          "candidate_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 21.886759825744956,
+            "date_mae": 26.59085229290143,
+            "bias": -13.52376034468632,
+            "p90_abs": 30.736326577991434,
+            "max_abs": 35.99903722721439
+          },
+          "reference_metrics": {
+            "n": 4,
+            "days": 2,
+            "mae": 21.886759825744956,
+            "date_mae": 26.59085229290143,
+            "bias": -13.52376034468632,
+            "p90_abs": 30.736326577991434,
+            "max_abs": 35.99903722721439
+          },
+          "gain": 0.0,
+          "wins": 0,
+          "days": 2,
+          "tail_ok": true
+        }
+      }
+    },
+    "decision": {
+      "passed": false
+    },
+    "duration_column": "J",
+    "sample_count": 14
+  },
+  "heat_paired_duration_metrics": {
+    "rate": {
+      "n": 10,
+      "days": 7,
+      "mae": 18.26040391676866,
+      "date_mae": 18.62172874045578,
+      "bias": 1.1163402692778361,
+      "p90_abs": 30.70055079559362,
+      "max_abs": 40.1395348837209
+    },
+    "line": {
+      "n": 10,
+      "days": 7,
+      "mae": 21.789681033341395,
+      "date_mae": 16.776995869154447,
+      "bias": 14.932715675102838,
+      "p90_abs": 38.92240124740124,
+      "max_abs": 65.9537422037422
+    },
+    "active_rate": {
+      "n": 10,
+      "days": 7,
+      "mae": 14.102290852975727,
+      "date_mae": 13.551385924593534,
+      "bias": -5.649358834293842,
+      "p90_abs": 25.199903722721434,
+      "max_abs": 35.99903722721439
+    },
+    "active_line": {
+      "n": 10,
+      "days": 7,
+      "mae": 19.48664990801359,
+      "date_mae": 15.68668193916601,
+      "bias": 9.878212412889075,
+      "p90_abs": 30.98215041625511,
+      "max_abs": 63.18569211231835
+    }
+  },
+  "resting_hr": {
+    "pairs": 29,
+    "metrics": {
+      "historical": {
+        "n": 15,
+        "days": 15,
+        "mae": 6.533333333333333,
+        "date_mae": 6.533333333333333,
+        "bias": 2.6666666666666665
+      },
+      "last": {
+        "n": 15,
+        "days": 15,
+        "mae": 7.933333333333334,
+        "date_mae": 7.933333333333334,
+        "bias": 1.0
+      },
+      "minutes": {
+        "n": 15,
+        "days": 15,
+        "mae": 6.732423283445526,
+        "date_mae": 6.732423283445526,
+        "bias": 2.742229806336956
+      },
+      "steps": {
+        "n": 15,
+        "days": 15,
+        "mae": 6.73096842291829,
+        "date_mae": 6.73096842291829,
+        "bias": 2.8442987503015797
+      }
+    },
+    "decision": {
+      "passed": false,
+      "comparisons": {
+        "historical": {
+          "gain": -0.030472951547784677,
+          "wins": 6,
+          "days": 15,
+          "passed": false
+        },
+        "last": {
+          "gain": 0.15137521637241266,
+          "wins": 9,
+          "days": 15,
+          "passed": true
+        }
+      }
+    }
+  },
+  "chronos": {
+    "device": "cuda",
+    "torch": "2.4.1+cu118",
+    "transformers": "4.57.6",
+    "weights": "amazon/chronos-2",
+    "horizon": 120,
+    "issued_reference": 312,
+    "evaluation": {
+      "context_3": {
+        "candidate": "context_3",
+        "reference": "ridge_v1",
+        "issued_candidate": 312,
+        "issued_reference": 312,
+        "coverage_ok": true,
+        "passed": false,
+        "candidate_metrics": {
+          "n": 284,
+          "days": 5,
+          "mae": 12.285321517729423,
+          "date_mae": 12.8827002863427,
+          "bias": -3.321847244047783,
+          "p90_abs": 28.109779357910163,
+          "max_abs": 48.749847412109375
+        },
+        "reference_metrics": {
+          "n": 284,
+          "days": 5,
+          "mae": 10.136264253903708,
+          "date_mae": 9.423244417709782,
+          "bias": 0.7025584116761325,
+          "p90_abs": 19.896602296668664,
+          "max_abs": 37.51427573702662
+        },
+        "gain": -0.3671194033905471,
+        "wins": 1,
+        "days": 5,
+        "tail_ok": false
+      },
+      "context_10": {
+        "candidate": "context_10",
+        "reference": "ridge_v1",
+        "issued_candidate": 182,
+        "issued_reference": 312,
+        "coverage_ok": false,
+        "passed": false,
+        "candidate_metrics": {
+          "n": 164,
+          "days": 5,
+          "mae": 9.746196328139886,
+          "date_mae": 9.58697474939321,
+          "bias": -1.9458550709049875,
+          "p90_abs": 21.637466430664066,
+          "max_abs": 36.927268981933594
+        },
+        "reference_metrics": {
+          "n": 164,
+          "days": 5,
+          "mae": 9.981207379058928,
+          "date_mae": 9.395789069090029,
+          "bias": 0.43685710877919054,
+          "p90_abs": 19.653684028553148,
+          "max_abs": 33.94108305303433
+        },
+        "gain": -0.020348017489253602,
+        "wins": 2,
+        "days": 5,
+        "tail_ok": false
+      },
+      "context_20": {
+        "candidate": "context_20",
+        "reference": "ridge_v1",
+        "issued_candidate": 75,
+        "issued_reference": 312,
+        "coverage_ok": false,
+        "passed": false,
+        "candidate_metrics": {
+          "n": 67,
+          "days": 4,
+          "mae": 7.843559151265159,
+          "date_mae": 10.903905175709458,
+          "bias": 0.5394765369927705,
+          "p90_abs": 17.982363891601562,
+          "max_abs": 35.20146179199219
+        },
+        "reference_metrics": {
+          "n": 67,
+          "days": 4,
+          "mae": 9.98210734353932,
+          "date_mae": 11.539146097038097,
+          "bias": -0.26616489946579236,
+          "p90_abs": 18.17967571318251,
+          "max_abs": 29.25048500969271
+        },
+        "gain": 0.055050947096656935,
+        "wins": 3,
+        "days": 4,
+        "tail_ok": true
+      },
+      "selected": {
+        "candidate": "selected",
+        "reference": "ridge_v1",
+        "issued_candidate": 182,
+        "issued_reference": 312,
+        "coverage_ok": false,
+        "passed": false,
+        "candidate_metrics": {
+          "n": 164,
+          "days": 5,
+          "mae": 9.746196328139886,
+          "date_mae": 9.58697474939321,
+          "bias": -1.9458550709049875,
+          "p90_abs": 21.637466430664066,
+          "max_abs": 36.927268981933594
+        },
+        "reference_metrics": {
+          "n": 164,
+          "days": 5,
+          "mae": 9.981207379058928,
+          "date_mae": 9.395789069090029,
+          "bias": 0.43685710877919054,
+          "p90_abs": 19.653684028553148,
+          "max_abs": 33.94108305303433
+        },
+        "gain": -0.020348017489253602,
+        "wins": 2,
+        "days": 5,
+        "tail_ok": false
+      }
+    },
+    "common_context_metrics": {
+      "context_3": {
+        "n": 67,
+        "days": 4,
+        "mae": 9.211394808185634,
+        "date_mae": 13.875457161351253,
+        "bias": 0.7998001326375933,
+        "p90_abs": 24.96682739257812,
+        "max_abs": 48.749847412109375
+      },
+      "context_10": {
+        "n": 67,
+        "days": 4,
+        "mae": 7.513907019771747,
+        "date_mae": 10.86822354394283,
+        "bias": 0.7443131404136544,
+        "p90_abs": 18.288082885742188,
+        "max_abs": 36.927268981933594
+      },
+      "context_20": {
+        "n": 67,
+        "days": 4,
+        "mae": 7.843559151265159,
+        "date_mae": 10.903905175709458,
+        "bias": 0.5394765369927705,
+        "p90_abs": 17.982363891601562,
+        "max_abs": 35.20146179199219
+      },
+      "ridge_v1": {
+        "n": 67,
+        "days": 4,
+        "mae": 9.98210734353932,
+        "date_mae": 11.539146097038097,
+        "bias": -0.26616489946579236,
+        "p90_abs": 18.17967571318251,
+        "max_abs": 29.25048500969271
+      }
+    },
+    "development_gate": {
+      "candidate": "selected",
+      "reference": "ridge_v1",
+      "issued_candidate": 49,
+      "issued_reference": 118,
+      "coverage_ok": false,
+      "passed": false,
+      "candidate_metrics": {
+        "n": 45,
+        "days": 2,
+        "mae": 7.208395216200087,
+        "date_mae": 11.331645541720919,
+        "bias": -3.60237308078342,
+        "p90_abs": 23.593136596679688,
+        "max_abs": 35.23766326904297
+      },
+      "reference_metrics": {
+        "n": 45,
+        "days": 2,
+        "mae": 8.303124863678752,
+        "date_mae": 10.452369120445564,
+        "bias": -4.324105754001404,
+        "p90_abs": 14.830662625283328,
+        "max_abs": 25.624282747601626
+      },
+      "gain": -0.08412221297805383,
+      "wins": 1,
+      "days": 2,
+      "tail_ok": false
+    },
+    "lora_trigger": false,
+    "lora_status": "development_gate_not_met",
+    "status": "completed"
+  },
+  "environment": {
+    "python": "3.10.4",
+    "numpy": "1.26.4",
+    "scikit_learn": "1.6.0"
+  },
+  "verification": {
+    "baseline_matches": true,
+    "prediction_and_observation_csv_hashes_match_on_repeat": 6,
+    "heart_ledger_timing_check": "pass",
+    "offline_javascript_smoke": "pass"
+  }
+}

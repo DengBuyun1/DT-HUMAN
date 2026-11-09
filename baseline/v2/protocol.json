@@ -1,0 +1,17 @@
+{
+  "design": "exploratory chronological replay of the previously inspected single-subject workbook",
+  "heart_warmup_dates": 6,
+  "heart_inner_warmup_dates": 4,
+  "heart_window_seconds": 30,
+  "heart_horizons_seconds": [30, 120],
+  "ridge_alphas": [5, 15, 50],
+  "kalman_slope_variances": [0.01, 0.05, 0.2],
+  "kalman_level_variance": 0.1,
+  "chronos_context_windows": [3, 10, 20],
+  "chronos_lora_trigger": "at least 5% lower matched date MAE than ridge_v1 and wins on a majority of the development dates, at baseline coverage",
+  "heat_warmup_dates": 4,
+  "min_relative_gain": 0.05,
+  "min_reference_error_dates": 3,
+  "seed": 20261109,
+  "adoption": "same scored windows; at least 5% date MAE improvement, strict majority of dates won, no P90 deterioration, and no coverage loss"
+}
