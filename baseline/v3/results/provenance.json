@@ -1,0 +1,65 @@
+{
+  "run_id": "v3-20261110-141526-382818",
+  "repeat_id": "v3-20261110-141526-390329",
+  "parents": [
+    "20261109-110040-088694",
+    "v2-20261109-170819-386454",
+    "连续半段-20261109-192322-716804"
+  ],
+  "plan_checkpoint_commit": "9bbcf572b56fa6ca7920c3cd13adb93f05905697",
+  "private_input_sha256": "f02fe6752388aca08a56eb6c27c3540b8f42188f588494b4175fc94038109c8b",
+  "private_frozen_plan_sha256": "624499fd5d87e385a10095236b8f2717f099efb6d6cb89cb168f2efe0266e71e",
+  "reviewed_local_algorithm_note_sha256": "1ac9a19209037d1e3f9a3fe8e37a0dd446b922a83bef841a12fb8a9b5364ba37",
+  "original_code_sha256": {
+    "build.py": "6fadd3c208638c8b28ba931a694efd10a82e9e81c2ac5a47fa80cc770eba61fc",
+    "swim.py": "0dde69760f044a72098857aaa63a02710195bcee23c9d5090c7eb5be84da8206",
+    "v2/evaluate.py": "bb569db1bc00391f7d707ca2142bd970491988f739db85d9b1c9aa2f5eaec2a0",
+    "plot_full_atlas.py": "4e9bfe247f80afab821bd620138dcc8a612ea8fea906af688ac0b9bbbaa008cf",
+    "requirements.txt": "349d136bfa99b11c752279a61e790003a2006bb01f304f558f226a205adc46e2",
+    "vendor/garmin_lab/registry/store.py": "0a5024b59ed577284c53bfafb2c2f1b5c609f1c402c64f7b5a61d4db75430acf",
+    "tests/v3/test_contract.py": "6b972084c482ac333a0599b8f510871be1696ea8b2ba9177e87eb2c561b59345",
+    "v3/aggregate.py": "d258228e5bdfa74d36e405ce6fc27fe672ec3635dd92dac59176cf7d44e44c0c",
+    "v3/calibration.py": "1d1fd4e078f2f2e865eff8a7dd9d53449216debf594aeee44b94083926291398",
+    "v3/daily.py": "45748c3c194d7e9e73f89048df8942372fbc1c431a91cb1ff449aeccd4ab964b",
+    "v3/data_quality.py": "14f5f488fea726d945b99f991c930464a5a4a6a424b389e42a247b6801269c56",
+    "v3/evaluate.py": "a971bd2fbc26c3883b20f7fb47bd2b5f768512c7baaed104fa1b3820eb48b1f8",
+    "v3/figures.py": "823b18e7151b793a57d5304de254c3dd55688e9d99b958e4021fc22dac48e334",
+    "v3/heart.py": "b72a519d89d3ef977f4c39af56e762ed729bf8cbe7d6ed88e06ddd1c79d11e77",
+    "v3/heat.py": "4efd4dc1a72ef79e0219ff78286372a43c1da55161a5d2d00656e0093a54c1cb",
+    "v3/replay.py": "7e3f0a5e298e3a8621ec23325445170a80018223caf24f26caef10d2ce4d97d0",
+    "v3/run.py": "b08faec51b843fae8507979f2283178bfa62eb63646b15ed2aae38db6211222f",
+    "v3/splits.py": "38cd6b40e6617cf7ad38d74b7143a3d407521a6bb0bb53f5bd3cc18718a841c2",
+    "v3/verify.py": "64d64ff88d448f8ff5ff07647dbbdce8f690ad66a05ef74169e8f89392418d64"
+  },
+  "original_official_result_manifest_sha256": "3e80793b18b02c32c93292007cd05558121789a5b814d1d481262aa17d1f2195",
+  "original_repeat_manifest_sha256": "9b3b14266695b30b9bbf11704d56d24208103defbfbe5d0ecb9415ad946048a7",
+  "repeated_core_files_match": [
+    "protocol.json",
+    "metrics.json",
+    "predictions.csv",
+    "calibration.csv",
+    "split_manifest.csv",
+    "model_parameters.json",
+    "decision_table.csv",
+    "per_date_metrics.csv",
+    "per_session_metrics.csv",
+    "coverage.csv",
+    "sensitivity_results.csv"
+  ],
+  "environment": {
+    "python": "3.10.4",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "numpy": "1.26.4",
+    "sklearn": "1.6.0",
+    "matplotlib": "3.10.6",
+    "threadpoolctl": "3.5.0",
+    "thread_limit": 1,
+    "device": "CPU",
+    "dtype": "float64"
+  },
+  "public_redactions": {
+    "baseline/v3/run.py": "去除包含真实日期与读数的两条固定小睡断言。读取、聚合、训练、预测及评分算法保留。",
+    "baseline/tests/v3/test_contract.py": "用合成日期和时长替换测试中的真实小睡示例，并统一改用合成日期。",
+    "baseline/v3/protocol.json": "以相对日序公布划分。原始日历留在授权本地包。"
+  }
+}

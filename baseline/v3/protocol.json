@@ -1,0 +1,43 @@
+{
+  "version": "V3.0",
+  "stage": "04",
+  "source_sha256": "f02fe6752388aca08a56eb6c27c3540b8f42188f588494b4175fc94038109c8b",
+  "plan_sha256": "624499fd5d87e385a10095236b8f2717f099efb6d6cb89cb168f2efe0266e71e",
+  "fixed_cutoff": null,
+  "calendar_start": null,
+  "calendar_end": null,
+  "hour_min_5min_bins": 3,
+  "day_min_hours": 8,
+  "strict_day_min_hours": 12,
+  "day_min_6h_blocks": 3,
+  "daily_min_train_points": 8,
+  "daily_min_train_pairs": 7,
+  "min_test_points": 4,
+  "min_adoption_dates": 5,
+  "daily_alpha": 1,
+  "heart_alpha": 15,
+  "heart_min_train_dates": 3,
+  "heart_horizons": [
+    30,
+    120
+  ],
+  "heart_tolerance_bpm": 10,
+  "heart_min_gain_bpm": 0.5,
+  "relative_gain": 0.05,
+  "numeric_tolerance": 1e-08,
+  "band_min_dates": 5,
+  "band_quantile": 0.9,
+  "alpha_search": false,
+  "seed": 20261109,
+  "public_calendar": {
+    "days": 31,
+    "train_days": [
+      1,
+      15
+    ],
+    "test_days": [
+      16,
+      31
+    ]
+  }
+}
