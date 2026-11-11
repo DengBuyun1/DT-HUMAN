@@ -7,3 +7,11 @@ __pycache__/
 **/runs/
 **/index.html
 *.safetensors
+*.m4a
+*.wav
+*.mp3
+*.xls
+*.xlsm
+**/归档包/
+**/归档说明/
+**/图表/
